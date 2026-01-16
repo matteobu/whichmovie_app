@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "dramatiq_crontab",
     "rest_framework",
     "movies",
+    "accounts",
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,7 @@ ROOT_URLCONF = "whichmovie.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "whichmovie" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -143,3 +144,6 @@ DRAMATIQ_BROKER = {
         "dramatiq.middleware.Callbacks",
     ],
 }
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"

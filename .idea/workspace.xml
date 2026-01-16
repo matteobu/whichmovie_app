@@ -5,46 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="refactor: Clean up code formatting and improve consistency across files">
-      <change afterPath="$PROJECT_DIR$/.pre-commit-config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/whichfilm_platform.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/whichfilm_platform.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/registration/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/registration/logout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/registration/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/registration/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/base/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/base/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/base/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/base/exceptions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/tmdb/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/tmdb/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/tmdb/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/tmdb/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/tmdb/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/tmdb/tests/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/tmdb/tests/test_tmdb_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/tmdb/tests/test_tmdb_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/utils/decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/utils/decorators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/utils/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/utils/helpers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/utils/rate_limiter.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/utils/rate_limiter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/youtube/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/youtube/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/youtube/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/youtube/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/youtube/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/youtube/tests/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/youtube/tests/test_mubi_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/youtube/tests/test_mubi_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/youtube/tests/test_rotten_tomatoes_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/youtube/tests/test_rotten_tomatoes_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/youtube/tests/test_youtube_integration.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/youtube/tests/test_youtube_integration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/migrations/0002_movie_delete_film.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/migrations/0002_movie_delete_film.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/migrations/0003_movie_backdrop_path_movie_overview_movie_poster_path_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/migrations/0003_movie_backdrop_path_movie_overview_movie_poster_path_and_more.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/templates/movies/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/tests/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/tests/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/tests/tests_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/tests/tests_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/tests/tests_tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/tests/tests_tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whichmovie/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whichmovie/templates/whichfilm_platform/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/views.py" afterDir="false" />
     </list>
@@ -59,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -90,32 +58,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.whichmovie_app.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.python manage.py runserver.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/matteobucciol/Documents/repos_mb/whichmovie_app&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.whichmovie_app.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.python manage.py runserver.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/matteobucciol/Documents/repos_mb/whichmovie_app",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/accounts/templates/registrations" />
       <recent name="$PROJECT_DIR$/movies/tests" />
       <recent name="$PROJECT_DIR$/contrib/youtube/tests/RottenTomatoesClient" />
       <recent name="$PROJECT_DIR$/contrib/youtube/tests/MubiClient" />
@@ -207,7 +177,9 @@
       <workItem from="1764331372891" duration="9004000" />
       <workItem from="1764576115460" duration="641000" />
       <workItem from="1765531965767" duration="3062000" />
-      <workItem from="1765545088843" duration="3225000" />
+      <workItem from="1765545088843" duration="5626000" />
+      <workItem from="1765706004618" duration="3000" />
+      <workItem from="1768551408177" duration="12375000" />
     </task>
     <task id="LOCAL-00001" summary="Fix - Removed whichfilm app">
       <option name="closed" value="true" />
@@ -473,7 +445,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764338017396</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="refactor: Clean up code formatting and improve consistency across files">
+      <option name="closed" value="true" />
+      <created>1765549304427</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1765549304427</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
