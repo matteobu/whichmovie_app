@@ -1,0 +1,113 @@
+ <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>WhichMovie</title>
+      <style>
+          * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+          }
+          body {
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+              min-height: 100vh;
+              color: #fff;
+          }
+          nav {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              padding: 1rem 2rem;
+              gap: 1rem;
+          }
+          nav a, nav button {
+              color: #fff;
+              text-decoration: none;
+              padding: 0.5rem 1rem;
+              border-radius: 4px;
+              transition: background 0.2s;
+          }
+          nav a:hover {
+              background: rgba(255,255,255,0.1);
+          }
+          nav .btn-primary {
+              background: #e94560;
+          }
+          nav .btn-primary:hover {
+              background: #ff6b6b;
+          }
+          nav button {
+              background: none;
+              border: none;
+              cursor: pointer;
+              font-size: 1rem;
+          }
+          nav button:hover {
+              background: rgba(255,255,255,0.1);
+          }
+          nav span {
+              color: rgba(255,255,255,0.8);
+          }
+          .hero {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              padding: 4rem 2rem;
+              min-height: 80vh;
+          }
+          .hero h1 {
+              font-size: 3.5rem;
+              margin-bottom: 1rem;
+          }
+          .hero h1 span {
+              color: #e94560;
+          }
+          .hero p {
+              font-size: 1.25rem;
+              color: rgba(255,255,255,0.7);
+              margin-bottom: 2rem;
+              max-width: 500px;
+          }
+          .cta-button {
+              display: inline-block;
+              background: #e94560;
+              color: #fff;
+              text-decoration: none;
+              padding: 1rem 2.5rem;
+              border-radius: 50px;
+              font-size: 1.1rem;
+              font-weight: 600;
+              transition: transform 0.2s, box-shadow 0.2s;
+          }
+          .cta-button:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
+          }
+      </style>
+  </head>
+  <body>
+      <nav>
+          {% if user.is_authenticated %}
+              <a href="{% url 'profile' %}" class="btn-secondary"><span>Hello, {{ user.username }}!</span></a>
+              <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                  {% csrf_token %}
+                  <button type="submit">Logout</button>
+              </form>
+          {% else %}
+              <a href="{% url 'login' %}">Login</a>
+              <a href="{% url 'signup' %}" class="btn-primary">Sign Up</a>
+          {% endif %}
+      </nav>
+
+      <main class="hero">
+          <h1>Which<span>Movie</span>?</h1>
+          <p>Discover curated films from the best streaming platforms. Find your next favorite movie.</p>
+          <a href="{% url 'movie_list' %}" class="cta-button">Browse Movies</a>
+      </main>
+  </body>
+  </html>
