@@ -123,7 +123,7 @@
       <nav>
           <a href="{% url 'home' %}">Home</a>
           <a href="{% url 'movie_list' %}">Movies</a>
-          <form method="post" action="{% url 'logout' %}" style="display: inline;">
+          <form method="post" action="{% url 'account_logout' %}" style="display: inline;">
               {% csrf_token %}
               <button type="submit">Logout</button>
           </form>
@@ -155,7 +155,7 @@
               </div>
 
               <div class="actions">
-                  <a href="{% url 'password_change' %}" class="btn btn-primary">Change Password</a>
+                  <a href="{% url 'account_change_password' %}" class="btn btn-primary">Change Password</a>
 {#                  django-allauth to change password > #}
 {#                  2factor auth #}
                   <a href="{% url 'movie_list' %}" class="btn btn-secondary">Browse Movies</a>
