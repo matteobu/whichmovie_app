@@ -19,24 +19,31 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+        flex-wrap: wrap;
     }
     .filter-form {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 0.5rem;
+        flex-wrap: wrap;
     }
     .filter-form label {
         color: rgba(255,255,255,0.8);
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        margin-left: 0.5rem;
+    }
+    .filter-form label:first-child {
+        margin-left: 0;
     }
     .filter-form select {
-        padding: 0.5rem 1rem;
+        padding: 0.4rem 0.75rem;
         border: 1px solid rgba(255,255,255,0.2);
         border-radius: 8px;
         background: rgba(255,255,255,0.05);
         color: #fff;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         cursor: pointer;
+        min-width: 100px;
     }
     .filter-form select:focus {
         outline: none;
@@ -48,7 +55,8 @@
     }
     .clear-filter {
         color: #e94560;
-        font-size: 0.875rem;
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
     }
     .movies-grid {
         display: grid;
@@ -162,16 +170,32 @@
 
     <div class="filters">
         <form method="get" class="filter-form">
-            <label for="year">Filter by year:</label>
+            <label for="year">Year:</label>
             <select name="year" id="year" onchange="this.form.submit()">
-                <option value="">All years</option>
+                <option value="">All</option>
                 {% for year in available_years %}
                 <option value="{{ year }}" {% if selected_year == year|stringformat:"d" %}selected{% endif %}>{{ year }}</option>
                 {% endfor %}
             </select>
+
+            <label for="genre">Genre:</label>
+            <select name="genre" id="genre" onchange="this.form.submit()">
+                <option value="">All</option>
+                {% for genre in available_genres %}
+                <option value="{{ genre }}" {% if selected_genre == genre %}selected{% endif %}>{{ genre }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="rating">Rating:</label>
+            <select name="rating" id="rating" onchange="this.form.submit()">
+                <option value="">All</option>
+                {% for value, label in rating_options %}
+                <option value="{{ value }}" {% if selected_rating == value %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
         </form>
-        {% if selected_year %}
-        <a href="{% url 'movie_list' %}" class="clear-filter">Clear filter</a>
+        {% if selected_year or selected_genre or selected_rating %}
+        <a href="{% url 'movie_list' %}" class="clear-filter">Clear all</a>
         {% endif %}
     </div>
 </div>
