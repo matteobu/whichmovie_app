@@ -4,16 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="Add login/logout and profile">
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="Add Password reset and allauth package">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/logout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/account/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contrib/tmdb/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/tmdb/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/templates/movies/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whichmovie/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +192,7 @@
       <workItem from="1768807593955" duration="7000" />
       <workItem from="1769161241916" duration="965000" />
       <workItem from="1769174658005" duration="10000" />
-      <workItem from="1770977818406" duration="8285000" />
+      <workItem from="1770977818406" duration="12755000" />
     </task>
     <task id="LOCAL-00001" summary="Fix - Removed whichfilm app">
       <option name="closed" value="true" />
@@ -486,7 +490,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770982583765</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Add Password reset and allauth package">
+      <option name="closed" value="true" />
+      <created>1770994184025</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1770994184025</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,7 +516,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Add TMDB enrichment task for movies and update cron schedule" />
     <MESSAGE value="feat: Add TMDB enrichment fields to Movie model and update enrichment task" />
     <MESSAGE value="feat: Add backdrop_path, overview, poster_path, and release_date fields to Movie model" />
     <MESSAGE value="feat: Enhance TMDBClient with request handling and movie search functionality" />
@@ -529,7 +540,8 @@
     <MESSAGE value="refactor: Clean up code formatting and improve consistency across files" />
     <MESSAGE value="feat: Implement user authentication with login, signup, and profile pages" />
     <MESSAGE value="Add login/logout and profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add login/logout and profile" />
+    <MESSAGE value="Add Password reset and allauth package" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Password reset and allauth package" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

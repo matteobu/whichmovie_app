@@ -128,22 +128,39 @@ def enrich_movies_with_tmdb():
         for movie in movies_to_enrich:
             try:
                 # Search TMDB for this movie
-                tmdb_data = client.search_movie(movie.title)
+                search_result = client.search_movie(movie.title)
 
-                if tmdb_data:
-                    # Update movie with TMDB data
-                    movie.tmdb_id = tmdb_data.get("id")
-                    movie.imdb_id = tmdb_data.get("imdb_id")
-                    movie.overview = tmdb_data.get("overview")
-                    movie.release_date = tmdb_data.get("release_date")
-                    movie.poster_path = tmdb_data.get("poster_path")
-                    movie.backdrop_path = tmdb_data.get("backdrop_path")
-                    movie.save()
+                if search_result:
+                    tmdb_id = search_result.get("id")
 
-                    enriched_count += 1
-                    logger.info(
-                        f"[ENRICHED] {movie.title} with TMDB ID: {tmdb_data.get('id')}"
-                    )
+                    # Get full movie details
+                    tmdb_data = client.get_movie_details(tmdb_id)
+
+                    if tmdb_data:
+                        # Update movie with TMDB data
+                        movie.tmdb_id = tmdb_data.get("id")
+                        movie.imdb_id = search_result.get("imdb_id")
+                        movie.overview = tmdb_data.get("overview")
+                        movie.release_date = tmdb_data.get("release_date") or None
+                        movie.poster_path = tmdb_data.get("poster_path")
+                        movie.backdrop_path = tmdb_data.get("backdrop_path")
+                        movie.genres = tmdb_data.get("genres")
+                        movie.vote_average = tmdb_data.get("vote_average")
+                        movie.vote_count = tmdb_data.get("vote_count")
+                        movie.runtime = tmdb_data.get("runtime")
+                        movie.popularity = tmdb_data.get("popularity")
+                        movie.original_language = tmdb_data.get("original_language")
+                        movie.production_countries = tmdb_data.get(
+                            "production_countries"
+                        )
+                        movie.save()
+
+                        enriched_count += 1
+                        logger.info(f"[ENRICHED] {movie.title} with TMDB ID: {tmdb_id}")
+                    else:
+                        logger.info(
+                            f"[NO DETAILS] Could not fetch details for {movie.title}"
+                        )
                 else:
                     logger.info(f"[NOT FOUND] {movie.title} not found on TMDB")
 

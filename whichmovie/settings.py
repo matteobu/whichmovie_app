@@ -160,7 +160,9 @@ DRAMATIQ_BROKER = {
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
-ACCOUNT_AUTHENTICATION_METHOD = "email"
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_LOGIN_METHODS = {"username"}
+ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
 SITE_ID = 1
+ACCOUNT_FORMS = {
+    "signup": "accounts.forms.CustomSignupForm",
+}

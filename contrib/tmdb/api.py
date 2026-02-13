@@ -133,6 +133,46 @@ class TMDBClient(BaseClient):
             logger.warning(f"Could not fetch IMDb ID for TMDB ID {tmdb_id}: {e}")
             return None
 
+    def get_movie_details(self, tmdb_id):
+        """
+        Get full movie details from TMDB.
+
+        Args:
+            tmdb_id (int): TMDB movie ID
+
+        Returns:
+            dict or None: Full movie details including runtime, genres, etc.
+        """
+        try:
+            response = self._make_request(f"/movie/{tmdb_id}")
+
+            # Extract genre names from genre objects
+            genres = [g["name"] for g in response.get("genres", [])]
+
+            # Extract production country codes
+            production_countries = [
+                c["iso_3166_1"] for c in response.get("production_countries", [])
+            ]
+
+            return {
+                "id": response.get("id"),
+                "title": response.get("title"),
+                "overview": response.get("overview"),
+                "release_date": response.get("release_date"),
+                "poster_path": response.get("poster_path"),
+                "backdrop_path": response.get("backdrop_path"),
+                "genres": genres,
+                "vote_average": response.get("vote_average"),
+                "vote_count": response.get("vote_count"),
+                "runtime": response.get("runtime"),
+                "popularity": response.get("popularity"),
+                "original_language": response.get("original_language"),
+                "production_countries": production_countries,
+            }
+        except NetworkError as e:
+            logger.error(f"Error fetching movie details for TMDB ID {tmdb_id}: {e}")
+            return None
+
     def get_data(self, **kwargs):
         """
         Fetch data from TMDB API.

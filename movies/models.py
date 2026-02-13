@@ -32,6 +32,17 @@ class Movie(models.Model):
     poster_path = models.CharField(max_length=255, blank=True, null=True)
     backdrop_path = models.CharField(max_length=255, blank=True, null=True)
 
+    # Additional TMDB fields
+    genres = models.JSONField(blank=True, null=True)  # List of genre names
+    vote_average = models.FloatField(blank=True, null=True)
+    vote_count = models.IntegerField(blank=True, null=True)
+    runtime = models.IntegerField(blank=True, null=True)  # Minutes
+    popularity = models.FloatField(blank=True, null=True)
+    original_language = models.CharField(max_length=10, blank=True, null=True)
+    production_countries = models.JSONField(
+        blank=True, null=True
+    )  # List of country codes
+
     # Metadata
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
