@@ -132,9 +132,9 @@
       <div class="container">
           <div class="profile-card">
               <div class="profile-header">
-                  <div class="avatar">{{ user.username|first|upper }}</div>
+                  <div class="avatar">{{ user.email|first|upper }}</div>
                   <div>
-                      <h1>{{ user.username }}</h1>
+                      <h1>{{ user.email }}</h1>
                       <p>Member since {{ user.date_joined|date:"F Y" }}</p>
                   </div>
               </div>
@@ -142,7 +142,7 @@
               <div class="profile-info">
                   <div class="info-row">
                       <span class="info-label">Username</span>
-                      <span class="info-value">{{ user.username }}</span>
+                      <span class="info-value">{{ user.email }}</span>
                   </div>
                   <div class="info-row">
                       <span class="info-label">Email</span>
@@ -156,6 +156,8 @@
 
               <div class="actions">
                   <a href="{% url 'password_change' %}" class="btn btn-primary">Change Password</a>
+{#                  django-allauth to change password > #}
+{#                  2factor auth #}
                   <a href="{% url 'movie_list' %}" class="btn btn-secondary">Browse Movies</a>
               </div>
           </div>

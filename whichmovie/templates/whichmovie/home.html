@@ -93,7 +93,7 @@
   <body>
       <nav>
           {% if user.is_authenticated %}
-              <a href="{% url 'profile' %}" class="btn-secondary"><span>Hello, {{ user.username }}!</span></a>
+              <a href="{% url 'profile' %}" class="btn-secondary"><span>Hello, {{ user.email }}!</span></a>
               <form method="post" action="{% url 'logout' %}" style="display: inline;">
                   {% csrf_token %}
                   <button type="submit">Logout</button>

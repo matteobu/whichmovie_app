@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="refactor: Clean up code formatting and improve consistency across files">
-      <change afterPath="$PROJECT_DIR$/accounts/templates/registration/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/registration/logout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/registration/profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/registration/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="feat: Implement user authentication with login, signup, and profile pages">
+      <change afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/registration/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/registration/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whichmovie/templates/whichfilm_platform/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whichmovie/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,14 +19,19 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/Users/matteobucciol/Documents/repos_mb/whichmovie_app" value="34C4wg1HG4Y5xBFS5cbHPzfXthD" />
+    </persistenceIdMap>
+  </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -58,31 +61,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.whichmovie_app.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.python manage.py runserver.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/matteobucciol/Documents/repos_mb/whichmovie_app",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.whichmovie_app.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.python manage.py runserver.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/matteobucciol/Documents/repos_mb/whichmovie_app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/accounts/templates/registrations" />
@@ -149,8 +152,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PY-252.27397.106" />
-        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-PY-252.28539.27" />
+        <option value="bundled-python-sdk-07523f343e4f-968fe969f28a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.28539.27" />
       </set>
     </attachedChunks>
   </component>
@@ -179,7 +182,11 @@
       <workItem from="1765531965767" duration="3062000" />
       <workItem from="1765545088843" duration="5626000" />
       <workItem from="1765706004618" duration="3000" />
-      <workItem from="1768551408177" duration="12375000" />
+      <workItem from="1768551408177" duration="17124000" />
+      <workItem from="1768807593955" duration="7000" />
+      <workItem from="1769161241916" duration="965000" />
+      <workItem from="1769174658005" duration="10000" />
+      <workItem from="1770977818406" duration="2841000" />
     </task>
     <task id="LOCAL-00001" summary="Fix - Removed whichfilm app">
       <option name="closed" value="true" />
@@ -453,7 +460,23 @@
       <option name="project" value="LOCAL" />
       <updated>1765549304427</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="feat: Implement user authentication with login, signup, and profile pages">
+      <option name="closed" value="true" />
+      <created>1768573524731</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1768573524731</updated>
+    </task>
+    <task id="LOCAL-00036" summary="feat: Implement user authentication with login, signup, and profile pages">
+      <option name="closed" value="true" />
+      <created>1768573531458</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1768573531458</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -471,7 +494,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Initialize Dramatiq and configure broker settings" />
     <MESSAGE value="feat: Add Dramatiq crontab integration and new migration for Movie model" />
     <MESSAGE value="feat: Add TMDB enrichment task for movies and update cron schedule" />
     <MESSAGE value="feat: Add TMDB enrichment fields to Movie model and update enrichment task" />
@@ -496,7 +518,8 @@
     <MESSAGE value="feat: Refactor test cases to use fixtures for MubiClient and enhance integration tests" />
     <MESSAGE value="feat: Refactor tests for MubiClient and RottenTomatoesClient to use parameterized cases" />
     <MESSAGE value="refactor: Clean up code formatting and improve consistency across files" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: Clean up code formatting and improve consistency across files" />
+    <MESSAGE value="feat: Implement user authentication with login, signup, and profile pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Implement user authentication with login, signup, and profile pages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
