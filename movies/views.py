@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from .models import Movie
 
 
+@login_required
 def movie_list(request):
     """Display list of all movies with TMDB enrichment data."""
     # Get only enriched movies (with release_date and poster)

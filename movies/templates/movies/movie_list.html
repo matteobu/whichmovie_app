@@ -2,7 +2,7 @@
 
 {% block title %}Browse Movies - WhichMovie{% endblock %}
 
-{% block extra_styles %}
+{% block movies_extra_styles %}
 <style>
     .page-header {
         margin-bottom: 2rem;
@@ -163,7 +163,7 @@
 </style>
 {% endblock %}
 
-{% block content %}
+{% block movies_content %}
 <div class="page-header">
     <h2>Browse Movies</h2>
     <p>Discover indie films from around the world</p>
@@ -214,6 +214,9 @@
             <h3 class="movie-title">{{ movie.title }}</h3>
 
             <div class="movie-meta">
+                {% if movie.release_date %}
+                <span class="movie-meta-item">{{ movie.release_date|date:"Y" }}</span>
+                {% endif %}
                 {% if movie.vote_average != None and movie.vote_average > 0 %}
                 <span class="movie-meta-item movie-rating">★ {{ movie.vote_average|floatformat:1 }}</span>
                 {% endif %}
@@ -244,4 +247,4 @@
     <p>No movies found. Run the YouTube fetch task to populate the database.</p>
 </div>
 {% endif %}
-{% endblock %}
+{% endblock movies_content %}
