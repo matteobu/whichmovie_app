@@ -106,6 +106,123 @@
             color: rgba(255,255,255,0.4);
             font-size: 0.875rem;
         }
+
+        /* Snackbar Messages */
+        .snackbar-wrapper {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            max-width: calc(100% - 2rem);
+            width: 540px;
+        }
+        .snackbar {
+            --bar-height: 5px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            display: flex;
+            position: relative;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px;
+            padding: 1rem 1rem 0;
+            overflow: hidden;
+            background-color: #fff;
+            color: #1a1a2e;
+            margin: 1rem auto;
+        }
+        @media (max-width: 768px) {
+            .snackbar {
+                flex-wrap: wrap;
+            }
+        }
+        .snackbar__message,
+        .snackbar__actions {
+            padding: 0 0 1rem;
+        }
+        .snackbar__message {
+            flex: 0 1 100%;
+        }
+        .snackbar__actions {
+            flex: 1 0 0;
+        }
+        .snackbar__actions button {
+            background: none;
+            border: none;
+            color: #e94560;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .snackbar__actions button:hover {
+            text-decoration: underline;
+        }
+        .snackbar__bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: var(--bar-height);
+            background-color: #ccc;
+        }
+        .snackbar--fadeout .snackbar__bar {
+            width: 0;
+            animation: barAnimation 5s linear;
+        }
+        .snackbar__bar.success {
+            background-color: #28a745;
+        }
+        .snackbar__bar.info,
+        .snackbar__bar.debug {
+            background-color: #17a2b8;
+        }
+        .snackbar__bar.warning,
+        .snackbar__bar.error {
+            background-color: #dc3545;
+        }
+        .snackbar--fadeout {
+            animation: fadeout 0.5s forwards;
+            animation-delay: 5s;
+        }
+        .snackbar--fadeout.show {
+            animation: fadein 0.5s;
+            display: flex;
+        }
+        @keyframes fadein {
+            from {
+                height: 0;
+                padding-top: 0;
+                opacity: 0;
+            }
+            to {
+                height: auto;
+                padding-top: 1rem;
+                opacity: 1;
+            }
+        }
+        @keyframes fadeout {
+            from {
+                height: auto;
+                opacity: 1;
+                padding-top: 1rem;
+            }
+            to {
+                height: 0;
+                padding-top: 0;
+                opacity: 0;
+                display: none;
+            }
+        }
+        @keyframes barAnimation {
+            0% {
+                width: 100%;
+            }
+            100% {
+                width: 0;
+            }
+        }
     </style>
     {% block extra_styles %}{% endblock %}
 </head>
@@ -133,7 +250,25 @@
     <main>
         {% block content %}{% endblock %}
     </main>
-
+    {% if messages %}
+    <div class="snackbar-wrapper">
+        {% for message in messages %}
+        <div id="django-message-{{ forloop.counter }}"
+             class="snackbar{% if message.extra_tags != 'persistent' %} snackbar--fadeout show{% endif %}">
+            <div class="snackbar__message">
+                {{ message }}
+            </div>
+            <div class="snackbar__actions">
+                <button type="button"
+                        onclick="this.closest('.snackbar').style.display='none'">
+                    Dismiss
+                </button>
+            </div>
+            <div class="snackbar__bar {{ message.tags }}"></div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
     <footer class="site-footer">
         &copy; 2025 WhichMovie
     </footer>

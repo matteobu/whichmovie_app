@@ -6,19 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="Add more filters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/logout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/password_change.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_change.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/password_reset.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_reset.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_reset_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/password_reset_from_key.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_reset_from_key.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/password_reset_from_key_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_reset_from_key_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/templates/movies/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whichmovie/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whichmovie/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +19,13 @@
     <persistenceIdMap>
       <entry key="_/Users/matteobucciol/Documents/repos_mb/whichmovie_app" value="34C4wg1HG4Y5xBFS5cbHPzfXthD" />
     </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedModel">
+    <selectedModels>
+      <entry key="edit-panel" value="GPT-4.1" />
+      <entry key="chat-panel" value="GPT-4.1" />
+      <entry key="agent-panel" value="GPT-4.1" />
+    </selectedModels>
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
@@ -194,6 +191,8 @@
       <workItem from="1769161241916" duration="965000" />
       <workItem from="1769174658005" duration="10000" />
       <workItem from="1770977818406" duration="14617000" />
+      <workItem from="1771577929887" duration="3869000" />
+      <workItem from="1771600739304" duration="3033000" />
     </task>
     <task id="LOCAL-00001" summary="Fix - Removed whichfilm app">
       <option name="closed" value="true" />
