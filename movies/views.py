@@ -1,12 +1,20 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
 from .models import Movie, Watchlist
 
 
-@login_required
+def login_required_message(request):
+    """Show a message that watchlist requires login and redirect back."""
+    messages.info(
+        request, "Watchlist is available for logged in users. Please login or sign up."
+    )
+    return redirect("movie_list")
+
+
 def movie_list(request):
     """Display list of all movies with TMDB enrichment data."""
     # Get only enriched movies (with release_date and poster)
@@ -21,9 +29,15 @@ def movie_list(request):
         .order_by("-release_date")
     )
 
-    watchlist_ids = list(
-        Watchlist.objects.filter(user=request.user).values_list("movie_id", flat=True)
-    )
+    # Only get watchlist for authenticated users
+    if request.user.is_authenticated:
+        watchlist_ids = list(
+            Watchlist.objects.filter(user=request.user).values_list(
+                "movie_id", flat=True
+            )
+        )
+    else:
+        watchlist_ids = []
     # Filter by year if provided
     year = request.GET.get("year")
     if year:
