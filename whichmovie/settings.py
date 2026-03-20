@@ -24,7 +24,13 @@ SECRET_KEY = config("DJANGO_SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="").split(",")
+
+CSRF_TRUSTED_ORIGINS = ["https://whichmovie.app", "https://www.whichmovie.app"]
+
+# Proxy settings
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
 
 ROOT_URLCONF = "whichmovie.urls"
 
@@ -53,6 +59,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "allauth",
     "allauth.account",
+    "anymail",
 ]
 
 # =============================================================================
@@ -139,14 +146,19 @@ LOGOUT_REDIRECT_URL = "/"
 
 ACCOUNT_LOGIN_METHODS = {"username"}
 ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_RATE_LIMITS = False
 
 # =============================================================================
 # EMAIL
 # =============================================================================
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+ANYMAIL = {
+    "MAILTRAP_API_TOKEN": config("MAILTRAP_API_TOKEN", default=""),
+}
+EMAIL_BACKEND = "anymail.backends.mailtrap.EmailBackend"
+DEFAULT_FROM_EMAIL = "hello@demomailtrap.co"
 
 # =============================================================================
 # INTERNATIONALIZATION
@@ -165,6 +177,7 @@ USE_TZ = True
 # =============================================================================
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [
     BASE_DIR / "frontend" / "assets",
 ]
