@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render
+from django.views.decorators.http import require_POST
 
-from .models import Movie
+from .models import Movie, Watchlist
 
 
 @login_required
@@ -19,6 +21,9 @@ def movie_list(request):
         .order_by("-release_date")
     )
 
+    watchlist_ids = list(
+        Watchlist.objects.filter(user=request.user).values_list("movie_id", flat=True)
+    )
     # Filter by year if provided
     year = request.GET.get("year")
     if year:
@@ -59,6 +64,7 @@ def movie_list(request):
 
     context = {
         "movies": movies,
+        "watchlist_ids": watchlist_ids,
         "total_movies": movies.count(),
         "enriched_movies": movies.filter(tmdb_id__isnull=False).count(),
         "available_years": [d.year for d in available_years],
@@ -70,3 +76,36 @@ def movie_list(request):
     }
 
     return render(request, "movies/movie_list.html", context)
+
+
+@login_required
+@require_POST
+def toggle_watchlist(request):
+    movie_id = request.POST.get("movie_id")
+    movie = get_object_or_404(Movie, pk=movie_id)
+    watchlist = Watchlist.objects.filter(user=request.user, movie=movie).first()
+    if watchlist:
+        watchlist.delete()
+        added = False
+    else:
+        Watchlist.objects.create(user=request.user, movie=movie)
+        added = True
+    return JsonResponse({"added": added})
+
+
+@login_required
+def watchlist_page(request):
+    """Display user's watchlist."""
+    watchlist_items = (
+        Watchlist.objects.filter(user=request.user)
+        .select_related("movie")
+        .order_by("-added_at")
+    )
+    movies = [item.movie for item in watchlist_items]
+
+    context = {
+        "movies": movies,
+        "total_movies": len(movies),
+    }
+
+    return render(request, "movies/watchlist.html", context)

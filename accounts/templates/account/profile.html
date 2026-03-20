@@ -62,14 +62,24 @@
     .actions {
         margin-top: 2rem;
         display: flex;
-        gap: 1rem;
+        flex-direction: column;
+        gap: 0.75rem;
     }
     .btn {
-        padding: 0.75rem 1.5rem;
-        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
         text-decoration: none;
         font-weight: 500;
-        transition: transform 0.2s;
+        font-size: 0.95rem;
+        transition: all 0.2s;
+        border: 1px solid transparent;
+    }
+    .btn i {
+        font-size: 1.25rem;
     }
     .btn:hover {
         transform: translateY(-2px);
@@ -78,10 +88,20 @@
     .btn-primary {
         background: #e94560;
         color: #fff;
+        box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+    }
+    .btn-primary:hover {
+        background: #ff5a75;
+        box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
     }
     .btn-secondary {
+        background: rgba(255,255,255,0.05);
+        color: rgba(255,255,255,0.9);
+        border-color: rgba(255,255,255,0.1);
+    }
+    .btn-secondary:hover {
         background: rgba(255,255,255,0.1);
-        color: #fff;
+        border-color: rgba(255,255,255,0.2);
     }
 </style>
 {% endblock %}
@@ -112,8 +132,18 @@
     </div>
 
     <div class="actions">
-        <a href="{% url 'account_change_password' %}" class="btn btn-primary">Change Password</a>
-        <a href="{% url 'movie_list' %}" class="btn btn-secondary">Browse Movies</a>
+        <a href="{% url 'watchlist_page' %}" class="btn btn-primary">
+            <i class="ti ti-heart"></i>
+            My Watchlist
+        </a>
+        <a href="{% url 'movie_list' %}" class="btn btn-secondary">
+            <i class="ti ti-movie"></i>
+            Browse Movies
+        </a>
+        <a href="{% url 'account_change_password' %}" class="btn btn-secondary">
+            <i class="ti ti-lock"></i>
+            Change Password
+        </a>
     </div>
 </div>
 {% endblock %}

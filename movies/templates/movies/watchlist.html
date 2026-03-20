@@ -1,7 +1,7 @@
 {% extends "movies/base.html" %}
 {% load static %}
 
-{% block title %}Browse Movies - WhichMovie{% endblock %}
+{% block title %}My Watchlist - WhichMovie{% endblock %}
 
 {% block movies_extra_styles %}
 <style>
@@ -14,50 +14,6 @@
     }
     .page-header p {
         color: rgba(255,255,255,0.6);
-    }
-    .filters {
-        margin-top: 1.5rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-    .filter-form {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-    }
-    .filter-form label {
-        color: rgba(255,255,255,0.8);
-        font-size: 0.85rem;
-        margin-left: 0.5rem;
-    }
-    .filter-form label:first-child {
-        margin-left: 0;
-    }
-    .filter-form select {
-        padding: 0.4rem 0.75rem;
-        border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 8px;
-        background: rgba(255,255,255,0.05);
-        color: #fff;
-        font-size: 0.85rem;
-        cursor: pointer;
-        min-width: 100px;
-    }
-    .filter-form select:focus {
-        outline: none;
-        border-color: #e94560;
-    }
-    .filter-form select option {
-        background: #1a1a2e;
-        color: #fff;
-    }
-    .clear-filter {
-        color: #e94560;
-        font-size: 0.8rem;
-        margin-left: 0.5rem;
     }
     .movies-grid {
         display: grid;
@@ -132,12 +88,6 @@
         font-size: 0.65rem;
         font-weight: 500;
     }
-    .movie-overview {
-        font-size: 0.75rem;
-        color: rgba(255,255,255,0.6);
-        line-height: 1.4;
-        margin-bottom: 0.75rem;
-    }
     .movie-link {
         display: inline-flex;
         align-items: center;
@@ -151,7 +101,7 @@
         text-decoration: none;
         gap: 0.5rem;
     }
-    .watchlist-btn {
+    .remove-btn {
         position: absolute;
         bottom: 0.5rem;
         right: 0.5rem;
@@ -162,16 +112,10 @@
         padding: 0;
         transition: transform 0.2s;
         line-height: 1;
-    }
-    .watchlist-btn:hover {
-        transform: scale(1.15);
-    }
-    .watchlist-btn i {
-        color: rgba(255,255,255,0.6);
-        transition: color 0.2s;
-    }
-    .watchlist-btn.active i {
         color: #e94560;
+    }
+    .remove-btn:hover {
+        transform: scale(1.15);
     }
     .empty-state {
         text-align: center;
@@ -183,51 +127,33 @@
     .empty-state p {
         color: rgba(255,255,255,0.6);
         font-size: 1.125rem;
+        margin-bottom: 1.5rem;
+    }
+    .empty-state a {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: #e94560;
+        color: #fff;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .empty-state a:hover {
+        text-decoration: none;
     }
 </style>
 {% endblock %}
 
 {% block movies_content %}
 <div class="page-header">
-    <h2>Browse Movies</h2>
-    <p>Discover indie films from around the world</p>
-
-    <div class="filters">
-        <form method="get" class="filter-form">
-            <label for="year">Year:</label>
-            <select name="year" id="year" onchange="this.form.submit()">
-                <option value="">All</option>
-                {% for year in available_years %}
-                <option value="{{ year }}" {% if selected_year == year|stringformat:"d" %}selected{% endif %}>{{ year }}</option>
-                {% endfor %}
-            </select>
-
-            <label for="genre">Genre:</label>
-            <select name="genre" id="genre" onchange="this.form.submit()">
-                <option value="">All</option>
-                {% for genre in available_genres %}
-                <option value="{{ genre }}" {% if selected_genre == genre %}selected{% endif %}>{{ genre }}</option>
-                {% endfor %}
-            </select>
-
-            <label for="rating">Rating:</label>
-            <select name="rating" id="rating" onchange="this.form.submit()">
-                <option value="">All</option>
-                {% for value, label in rating_options %}
-                <option value="{{ value }}" {% if selected_rating == value %}selected{% endif %}>{{ label }}</option>
-                {% endfor %}
-            </select>
-        </form>
-        {% if selected_year or selected_genre or selected_rating %}
-        <a href="{% url 'movie_list' %}" class="clear-filter">Clear all</a>
-        {% endif %}
-    </div>
+    <h2>My Watchlist</h2>
+    <p>{{ total_movies }} movie{{ total_movies|pluralize }} saved</p>
 </div>
 
 {% if movies %}
 <div class="movies-grid">
     {% for movie in movies %}
-    <div class="movie-card">
+    <div class="movie-card" data-movie-id="{{ movie.id }}">
         {% if movie.poster_path %}
         <img src="https://image.tmdb.org/t/p/w342{{ movie.poster_path }}" alt="{{ movie.title }}" class="movie-poster">
         {% else %}
@@ -263,9 +189,9 @@
             </a>
             {% endif %}
         </div>
-        <button class="watchlist-btn {% if movie.id in watchlist_ids %}active{% endif %}"
+        <button class="remove-btn"
                 data-movie-id="{{ movie.id }}"
-                title="Add to Watchlist">
+                title="Remove from Watchlist">
             <i class="ti ti-heart"></i>
         </button>
     </div>
@@ -273,11 +199,68 @@
 </div>
 {% else %}
 <div class="empty-state">
-    <p>No movies found. Run the YouTube fetch task to populate the database.</p>
+    <p>Your watchlist is empty. Start adding movies!</p>
+    <a href="{% url 'movie_list' %}">Browse Movies</a>
 </div>
 {% endif %}
 {% endblock movies_content %}
 
 {% block extra_js %}
-<script src="{% static 'js/watchlist.js' %}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    document.querySelectorAll('.remove-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const movieId = this.dataset.movieId;
+            const card = this.closest('.movie-card');
+
+            fetch('/movies/watchlist/toggle/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: 'movie_id=' + movieId
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.added) {
+                    card.remove();
+                    // Update count
+                    const countEl = document.querySelector('.page-header p');
+                    const remaining = document.querySelectorAll('.movie-card').length;
+                    countEl.textContent = remaining + ' movie' + (remaining !== 1 ? 's' : '') + ' saved';
+
+                    // Show empty state if no movies left
+                    if (remaining === 0) {
+                        document.querySelector('.movies-grid').innerHTML = `
+                            <div class="empty-state" style="grid-column: 1 / -1;">
+                                <p>Your watchlist is empty. Start adding movies!</p>
+                                <a href="/movies/">Browse Movies</a>
+                            </div>
+                        `;
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+});
+</script>
 {% endblock extra_js %}
