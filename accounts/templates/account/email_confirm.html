@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Confirm Email - WhichMovie{% endblock %}
+
+{% block extra_styles %}
+<style>
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 150px);
+        padding: 2rem;
+    }
+    .auth-container {
+        background: rgba(255,255,255,0.05);
+        border-radius: 16px;
+        padding: 2.5rem;
+        width: 100%;
+        max-width: 400px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
+    }
+    .auth-container h1 {
+        margin-bottom: 0.5rem;
+    }
+    .auth-container h1 span {
+        color: #e94560;
+    }
+    .subtitle {
+        color: rgba(255,255,255,0.6);
+        margin-bottom: 2rem;
+    }
+    .email-address {
+        color: #e94560;
+        font-weight: 600;
+    }
+    .auth-btn {
+        width: 100%;
+        padding: 0.875rem;
+        background: #e94560;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 1rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .auth-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
+    }
+    .auth-link {
+        margin-top: 1.5rem;
+        color: rgba(255,255,255,0.6);
+    }
+    .auth-link a {
+        color: #e94560;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <h1>Confirm <span>Email</span></h1>
+
+    {% if confirmation %}
+    <p class="subtitle">
+        Please confirm that <span class="email-address">{{ confirmation.email_address.email }}</span> is your email address.
+    </p>
+
+    <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+        {% csrf_token %}
+        <button type="submit" class="auth-btn">Confirm Email</button>
+    </form>
+    {% else %}
+    <p class="subtitle">
+        This confirmation link is invalid or has expired.
+    </p>
+    <p class="auth-link">
+        <a href="{% url 'account_login' %}">Go to Login</a>
+    </p>
+    {% endif %}
+</div>
+{% endblock %}

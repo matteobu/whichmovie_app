@@ -14,31 +14,28 @@ from pathlib import Path
 
 from decouple import config
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# =============================================================================
+# CORE SETTINGS
+# =============================================================================
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config("DJANGO_SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
-    "django.contrib.auth.backends.ModelBackend",
-    # `allauth` specific authentication methods, such as login by email
-    "allauth.account.auth_backends.AuthenticationBackend",
-]
+ROOT_URLCONF = "whichmovie.urls"
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+WSGI_APPLICATION = "whichmovie.wsgi.application"
 
-# Application definition
+SITE_ID = 1
+
+# =============================================================================
+# INSTALLED APPS
+# =============================================================================
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -47,14 +44,20 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    # Local
+    "movies",
+    "accounts",
+    # Third-party
     "django_dramatiq",
     "dramatiq_crontab",
     "rest_framework",
-    "movies",
-    "accounts",
     "allauth",
     "allauth.account",
 ]
+
+# =============================================================================
+# MIDDLEWARE
+# =============================================================================
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -67,7 +70,9 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
 ]
 
-ROOT_URLCONF = "whichmovie.urls"
+# =============================================================================
+# TEMPLATES
+# =============================================================================
 
 TEMPLATES = [
     {
@@ -84,11 +89,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "whichmovie.wsgi.application"
-
-
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+# =============================================================================
+# DATABASE
+# =============================================================================
 
 DATABASES = {
     "default": {
@@ -101,9 +104,16 @@ DATABASES = {
     }
 }
 
+# =============================================================================
+# AUTHENTICATION
+# =============================================================================
 
-# Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
+AUTH_USER_MODEL = "accounts.User"
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -120,11 +130,27 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "accounts.User"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
+# =============================================================================
+# DJANGO-ALLAUTH
+# =============================================================================
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
+ACCOUNT_LOGIN_METHODS = {"username"}
+ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_REQUIRED = True
+
+# =============================================================================
+# EMAIL
+# =============================================================================
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# =============================================================================
+# INTERNATIONALIZATION
+# =============================================================================
 
 LANGUAGE_CODE = "en-us"
 
@@ -134,18 +160,15 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
+# =============================================================================
+# STATIC FILES
+# =============================================================================
 
 STATIC_URL = "static/"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
-
-# Dramatiq Configuration
-# https://dramatiq.io/
+# =============================================================================
+# DRAMATIQ (TASK QUEUE)
+# =============================================================================
 
 DRAMATIQ_BROKER = {
     "BROKER": "dramatiq.brokers.redis.RedisBroker",
@@ -156,13 +179,4 @@ DRAMATIQ_BROKER = {
         "dramatiq.middleware.Retries",
         "dramatiq.middleware.Callbacks",
     ],
-}
-
-LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/"
-ACCOUNT_LOGIN_METHODS = {"username"}
-ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
-SITE_ID = 1
-ACCOUNT_FORMS = {
-    "signup": "accounts.forms.CustomSignupForm",
 }

@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="Add more filters">
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="Add password change redirect url with messages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whichmovie/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whichmovie/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whichmovie/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +190,9 @@
       <workItem from="1769174658005" duration="10000" />
       <workItem from="1770977818406" duration="14617000" />
       <workItem from="1771577929887" duration="3869000" />
-      <workItem from="1771600739304" duration="3033000" />
+      <workItem from="1771600739304" duration="5271000" />
+      <workItem from="1771834632768" duration="14000" />
+      <workItem from="1773994057295" duration="1271000" />
     </task>
     <task id="LOCAL-00001" summary="Fix - Removed whichfilm app">
       <option name="closed" value="true" />
@@ -514,7 +514,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771003561121</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Add password change redirect url with messages">
+      <option name="closed" value="true" />
+      <created>1771603924778</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1771603924778</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,7 +540,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Enhance TMDBClient with request handling and movie search functionality" />
     <MESSAGE value="feat: Update movie list display with TMDB enrichment and improved layout" />
     <MESSAGE value="feat: Update movie list layout and enhance title for clarity" />
     <MESSAGE value="feat: Update header title and remove duplicate title in movie list" />
@@ -557,7 +564,8 @@
     <MESSAGE value="Add Password reset and allauth package" />
     <MESSAGE value="Add filter and password change" />
     <MESSAGE value="Add more filters" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add more filters" />
+    <MESSAGE value="Add password change redirect url with messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add password change redirect url with messages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
