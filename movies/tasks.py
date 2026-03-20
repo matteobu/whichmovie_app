@@ -10,7 +10,8 @@ import dramatiq
 from dramatiq_crontab import cron
 
 from contrib.tmdb import TMDBClient
-from contrib.youtube import MubiClient, RottenTomatoesClient
+from contrib.tmdb.api import extract_year_from_title
+from contrib.youtube import MubiClient
 
 from .models import Movie
 
@@ -71,17 +72,18 @@ def _fetch_and_save_videos(client, source_name):
         raise
 
 
-@cron("0 0 * * *")  # Run daily at midnight UTC
-@dramatiq.actor(max_retries=3)
-def fetch_rotten_tomatoes_videos():
-    """
-    Cron Task: Fetch RottenTomatoes YouTube channel videos.
-
-    Fetches latest videos and saves to database.
-    Runs daily at midnight UTC.
-    """
-    client = RottenTomatoesClient()
-    _fetch_and_save_videos(client, "rotten_tomatoes")
+# Disabled - too much low quality content
+# @cron("0 0 * * *")  # Run daily at midnight UTC
+# @dramatiq.actor(max_retries=3)
+# def fetch_rotten_tomatoes_videos():
+#     """
+#     Cron Task: Fetch RottenTomatoes YouTube channel videos.
+#
+#     Fetches latest videos and saves to database.
+#     Runs daily at midnight UTC.
+#     """
+#     client = RottenTomatoesClient()
+#     _fetch_and_save_videos(client, "rotten_tomatoes")
 
 
 @cron("0 1 * * *")  # Run daily at 1 AM UTC (after YouTube fetch at midnight)
@@ -127,11 +129,22 @@ def enrich_movies_with_tmdb():
 
         for movie in movies_to_enrich:
             try:
+                # Use cleaned title, but extract year from original_title
+                search_title = movie.title
+                year = extract_year_from_title(movie.original_title)
+
                 # Search TMDB for this movie
-                search_result = client.search_movie(movie.title)
+                search_result = client.search_movie(search_title, year=year)
 
                 if search_result:
                     tmdb_id = search_result.get("id")
+
+                    # Check if tmdb_id already exists (duplicate movie)
+                    if Movie.objects.filter(tmdb_id=tmdb_id).exists():
+                        logger.warning(
+                            f"[DUPLICATE] {movie.title} -> TMDB {tmdb_id} already exists, skipping"
+                        )
+                        continue
 
                     # Get full movie details
                     tmdb_data = client.get_movie_details(tmdb_id)
@@ -156,7 +169,11 @@ def enrich_movies_with_tmdb():
                         movie.save()
 
                         enriched_count += 1
-                        logger.info(f"[ENRICHED] {movie.title} with TMDB ID: {tmdb_id}")
+                        match_score = search_result.get("match_score", 0)
+                        logger.info(
+                            f"[ENRICHED] {movie.title} -> {tmdb_data.get('title')} "
+                            f"(TMDB: {tmdb_id}, score: {match_score:.2f})"
+                        )
                     else:
                         logger.info(
                             f"[NO DETAILS] Could not fetch details for {movie.title}"

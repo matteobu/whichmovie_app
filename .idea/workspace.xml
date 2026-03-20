@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="add watchlist">
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="watchlist non auth user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/password_change.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_change.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/templates/movies/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contrib/tmdb/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/tmdb/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contrib/youtube/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/youtube/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/tasks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/templates/movies/watchlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/watchlist.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whichmovie/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +199,7 @@
       <workItem from="1771577929887" duration="3869000" />
       <workItem from="1771600739304" duration="5271000" />
       <workItem from="1771834632768" duration="14000" />
-      <workItem from="1773994057295" duration="16994000" />
+      <workItem from="1773994057295" duration="18979000" />
     </task>
     <task id="LOCAL-00001" summary="Fix - Removed whichfilm app">
       <option name="closed" value="true" />
@@ -547,7 +545,23 @@
       <option name="project" value="LOCAL" />
       <updated>1774020118248</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="update mobile">
+      <option name="closed" value="true" />
+      <created>1774041595213</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1774041595213</updated>
+    </task>
+    <task id="LOCAL-00045" summary="watchlist non auth user">
+      <option name="closed" value="true" />
+      <created>1774041975768</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1774041975768</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,8 +579,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Update header title and remove duplicate title in movie list" />
-    <MESSAGE value="feat: Refactor YouTube API client to support multiple channel clients and improve title extraction" />
     <MESSAGE value="feat: Add RottenTomatoesClient and MubiClient to YouTube data source integration" />
     <MESSAGE value="feat: Enhance YouTube video fetching with MubiClient integration and refactor fetching logic" />
     <MESSAGE value="feat: Refactor YouTube API client to use yt-dlp for video fetching and improve channel URL handling" />
@@ -590,14 +602,16 @@
     <MESSAGE value="Add password change redirect url with messages" />
     <MESSAGE value="changes admin user" />
     <MESSAGE value="add watchlist" />
-    <option name="LAST_COMMIT_MESSAGE" value="add watchlist" />
+    <MESSAGE value="update mobile" />
+    <MESSAGE value="watchlist non auth user" />
+    <option name="LAST_COMMIT_MESSAGE" value="watchlist non auth user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="NONE" type="python-line">
           <url>file://$PROJECT_DIR$/movies/tasks.py</url>
-          <line>16</line>
+          <line>17</line>
           <log-expression expression="logger.info(f&quot;[UPDATED] {video['title']} ({video['year']})&quot;)&#10;&#10;        logger.info(f&quot;Task completed: {created_count} new, {updated_count} updated&quot;)&#10;&#10;    except Exception as e:&#10;        logger.error(f&quot;Error fetching YouTube videos: {e}&quot;, exc_info=True)&#10;        raise" language="Python" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>

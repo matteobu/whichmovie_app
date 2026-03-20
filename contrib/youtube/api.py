@@ -217,7 +217,7 @@ class MubiClient(YouTubeBaseClient):
         """
         Extract movie title from Mubi title format.
 
-        Format: "MOVIE TITLE | Official Trailer #1 | ..." → "MOVIE TITLE"
+        Format: "MOVIE TITLE | Official Trailer #1 | ..." → "Movie Title"
         Skips teasers and "Coming Soon" announcements.
 
         Args:
@@ -242,6 +242,12 @@ class MubiClient(YouTubeBaseClient):
         match = re.match(r"^(.+?)\s*\|\s*Official Trailer", title)
         if match:
             cleaned = match.group(1).strip()
+            # Remove surrounding quotes
+            cleaned = cleaned.strip("\"'")
+            # Remove director's name pattern: "Director's TITLE" -> "TITLE"
+            cleaned = re.sub(r"^[\w\s]+'s\s+", "", cleaned)
+            # Convert to title case for better matching
+            cleaned = cleaned.title()
             logger.debug(f"[MubiClient] Extracted title: {cleaned}")
             return cleaned if cleaned else None
 

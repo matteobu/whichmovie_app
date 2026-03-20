@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}WhichMovie - Discover Curated Films{% endblock %}
+{% block title %}WhichMovie - Discover Curated Movies{% endblock %}
 
 {% block extra_styles %}
 <style>
@@ -10,20 +10,19 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding: 4rem 2rem;
-        min-height: 80vh;
+        padding: 3rem 2rem;
     }
     .hero h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
+        font-size: 3rem;
+        margin-bottom: 0.75rem;
     }
     .hero h1 span {
         color: #e94560;
     }
     .hero p {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         color: rgba(255,255,255,0.7);
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         max-width: 500px;
     }
     .cta-button {
@@ -31,9 +30,9 @@
         background: #e94560;
         color: #fff;
         text-decoration: none;
-        padding: 1rem 2.5rem;
+        padding: 0.875rem 2rem;
         border-radius: 50px;
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 600;
         transition: transform 0.2s, box-shadow 0.2s;
     }
@@ -43,21 +42,92 @@
         text-decoration: none;
     }
 
+    /* Picks Section */
+    .picks-section {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    .picks-header {
+        text-align: center;
+        margin-bottom: 1.25rem;
+    }
+    .picks-header h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    .picks-header a {
+        color: #e94560;
+        font-size: 0.9rem;
+    }
+    .picks-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 160px);
+        gap: 1rem;
+        justify-content: center;
+    }
+    .pick-card {
+        position: relative;
+        background: rgba(255,255,255,0.05);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pick-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+    .pick-poster {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+    }
+    .pick-info {
+        padding: 0.75rem;
+    }
+    .pick-title {
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+        line-height: 1.3;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .pick-meta {
+        display: flex;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: rgba(255,255,255,0.6);
+    }
+    .pick-rating {
+        color: #f5c518;
+        font-weight: 600;
+    }
+
     @media (max-width: 768px) {
         .hero {
-            padding: 3rem 1.5rem;
-            min-height: 70vh;
+            padding: 2rem 1.5rem;
         }
         .hero h1 {
-            font-size: 2.25rem;
+            font-size: 2rem;
         }
         .hero p {
             font-size: 1rem;
-            padding: 0 0.5rem;
         }
-        .cta-button {
-            padding: 0.875rem 2rem;
-            font-size: 1rem;
+        .picks-section {
+            padding: 1.5rem 1rem;
+        }
+        .picks-header h2 {
+            font-size: 1.25rem;
+        }
+        .picks-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+        .pick-poster {
+            height: 195px;
         }
     }
 
@@ -65,12 +135,11 @@
         .hero h1 {
             font-size: 1.75rem;
         }
-        .hero p {
-            font-size: 0.95rem;
+        .picks-grid {
+            grid-template-columns: repeat(2, 1fr);
         }
-        .cta-button {
-            width: 100%;
-            max-width: 280px;
+        .pick-poster {
+            height: 180px;
         }
     }
 </style>
@@ -79,7 +148,51 @@
 {% block content %}
 <div class="hero">
     <h1>Which<span>Movie</span>?</h1>
-    <p>Discover curated films from the best streaming platforms. Find your next favorite movie.</p>
-    <a href="{% url 'movie_list' %}" class="cta-button">Browse Movies</a>
+    <p>Discover curated indie movies from around the world.</p>
+    <a href="{% url 'movie_list' %}" class="cta-button">Browse All Movies</a>
 </div>
+
+{% if top_month %}
+<section class="picks-section">
+    <div class="picks-header">
+        <h2>Top Picks This Month</h2>
+    </div>
+    <div class="picks-grid">
+        {% for movie in top_month %}
+        <div class="pick-card">
+            <img src="https://image.tmdb.org/t/p/w342{{ movie.poster_path }}" alt="{{ movie.title }}" class="pick-poster">
+            <div class="pick-info">
+                <h3 class="pick-title">{{ movie.title }}</h3>
+                <div class="pick-meta">
+                    {% if movie.release_date %}<span>{{ movie.release_date|date:"Y" }}</span>{% endif %}
+                    {% if movie.vote_average %}<span class="pick-rating">★ {{ movie.vote_average|floatformat:1 }}</span>{% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+{% if top_week %}
+<section class="picks-section">
+    <div class="picks-header">
+        <h2>Top Picks This Week</h2>
+    </div>
+    <div class="picks-grid">
+        {% for movie in top_week %}
+        <div class="pick-card">
+            <img src="https://image.tmdb.org/t/p/w342{{ movie.poster_path }}" alt="{{ movie.title }}" class="pick-poster">
+            <div class="pick-info">
+                <h3 class="pick-title">{{ movie.title }}</h3>
+                <div class="pick-meta">
+                    {% if movie.release_date %}<span>{{ movie.release_date|date:"Y" }}</span>{% endif %}
+                    {% if movie.vote_average %}<span class="pick-rating">★ {{ movie.vote_average|floatformat:1 }}</span>{% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
 {% endblock %}

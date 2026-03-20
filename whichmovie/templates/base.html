@@ -322,16 +322,15 @@
             <i class="ti ti-menu-2" id="navIcon"></i>
         </button>
         <nav class="site-nav" id="siteNav">
-            <a href="{% url 'movie_list' %}">Browse</a>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'movie_list' %}">Movies</a>
             {% if user.is_authenticated %}
-            <a href="{% url 'watchlist_page' %}">My Watchlist</a>
-            <div class="nav-user">
-                <a href="{% url 'profile' %}">Profile</a>
-                <form method="post" action="{% url 'account_logout' %}" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="nav-btn-logout">Logout</button>
-                </form>
-            </div>
+            <a href="{% url 'watchlist_page' %}">Wishlist</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            <form method="post" action="{% url 'account_logout' %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="nav-btn-logout">Logout</button>
+            </form>
             {% else %}
             <a href="{% url 'account_login' %}">Login</a>
             {% endif %}

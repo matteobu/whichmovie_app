@@ -1,6 +1,8 @@
 """TMDB API client for fetching movie information."""
 
 import logging
+import re
+from difflib import SequenceMatcher
 
 import requests
 from decouple import config
@@ -8,6 +10,39 @@ from decouple import config
 from contrib.base import BaseClient, NetworkError, ValidationError
 
 logger = logging.getLogger(__name__)
+
+
+def normalize_title(title):
+    """Normalize a title for comparison."""
+    if not title:
+        return ""
+    # Lowercase, remove special chars, extra spaces
+    title = title.lower()
+    title = re.sub(r"[^\w\s]", "", title)
+    title = re.sub(r"\s+", " ", title).strip()
+    return title
+
+
+def title_similarity(title1, title2):
+    """Calculate similarity ratio between two titles (0.0 to 1.0)."""
+    t1 = normalize_title(title1)
+    t2 = normalize_title(title2)
+    return SequenceMatcher(None, t1, t2).ratio()
+
+
+def extract_year_from_title(title):
+    """Extract year from title like 'Movie Name (2024)' or 'Movie Name 2024'."""
+    if not title:
+        return None
+    # Match (2024) or [2024] at end of string
+    match = re.search(r"[\(\[]?(19\d{2}|20\d{2})[\)\]]?\s*$", title)
+    if match:
+        return int(match.group(1))
+    # Match year anywhere in title
+    match = re.search(r"\b(19\d{2}|20\d{2})\b", title)
+    if match:
+        return int(match.group(1))
+    return None
 
 
 class TMDBClient(BaseClient):
@@ -64,16 +99,24 @@ class TMDBClient(BaseClient):
         except requests.exceptions.RequestException as e:
             raise NetworkError(f"TMDB API request failed: {e}") from e
 
-    def search_movie(self, title, year=None):
+    # Minimum similarity threshold to accept a match
+    MIN_SIMILARITY_THRESHOLD = 0.6
+
+    def search_movie(self, title, year=None, min_similarity=None):
         """
-        Search for a movie by title.
+        Search for a movie by title with smart matching.
+
+        Searches TMDB and finds the best match based on:
+        - Title similarity scoring
+        - Year matching (if provided)
 
         Args:
             title (str): Movie title to search for
             year (int, optional): Release year to narrow search
+            min_similarity (float, optional): Minimum similarity threshold (0.0-1.0)
 
         Returns:
-            dict or None: Movie data if found, None otherwise
+            dict or None: Movie data if found with sufficient confidence, None otherwise
 
         Movie data includes:
             - id: TMDB ID
@@ -83,34 +126,91 @@ class TMDBClient(BaseClient):
             - poster_path: Poster image path
             - backdrop_path: Backdrop image path
             - imdb_id: IMDb ID (requires external_ids endpoint)
+            - match_score: Confidence score of the match
         """
+        if min_similarity is None:
+            min_similarity = self.MIN_SIMILARITY_THRESHOLD
+
         try:
+            # Try to extract year from title if not provided
+            extracted_year = extract_year_from_title(title)
+            search_year = year or extracted_year
+
+            # Clean title for search (remove year if present)
+            clean_title = re.sub(
+                r"\s*[\(\[]?(19\d{2}|20\d{2})[\)\]]?\s*$", "", title
+            ).strip()
+
             params = {
-                "query": title,
+                "query": clean_title,
                 "include_adult": False,
             }
 
-            if year:
-                params["year"] = year
+            if search_year:
+                params["year"] = search_year
 
             # Search for the movie
             response = self._make_request("/search/movie", params)
 
             if not response.get("results"):
+                # Retry without year if no results
+                if search_year:
+                    logger.info(
+                        f"No results for '{clean_title}' ({search_year}), retrying without year..."
+                    )
+                    del params["year"]
+                    response = self._make_request("/search/movie", params)
+
+            if not response.get("results"):
                 logger.info(f"No results found for '{title}'")
                 return None
 
-            # Get the first (most relevant) result
-            movie = response["results"][0]
+            # Find best match by scoring all results
+            best_match = None
+            best_score = 0
 
-            # Try to get IMDb ID (requires additional request)
-            imdb_id = self._get_imdb_id(movie["id"])
-            movie["imdb_id"] = imdb_id
+            for result in response["results"][:5]:  # Check top 5 results
+                result_title = result.get("title", "")
+                result_year = None
+                if result.get("release_date"):
+                    try:
+                        result_year = int(result["release_date"][:4])
+                    except (ValueError, TypeError):
+                        pass
 
-            logger.info(
-                f"Found movie: {movie.get('title')} (TMDB ID: {movie.get('id')})"
-            )
-            return movie
+                # Calculate title similarity
+                sim_score = title_similarity(clean_title, result_title)
+
+                # Boost score if year matches
+                if search_year and result_year:
+                    if search_year == result_year:
+                        sim_score = min(
+                            1.0, sim_score + 0.2
+                        )  # Boost for exact year match
+                    elif abs(search_year - result_year) <= 1:
+                        sim_score = min(1.0, sim_score + 0.1)  # Small boost for ±1 year
+
+                if sim_score > best_score:
+                    best_score = sim_score
+                    best_match = result
+
+            # Check if best match meets threshold
+            if best_match and best_score >= min_similarity:
+                # Try to get IMDb ID (requires additional request)
+                imdb_id = self._get_imdb_id(best_match["id"])
+                best_match["imdb_id"] = imdb_id
+                best_match["match_score"] = best_score
+
+                logger.info(
+                    f"Found movie: {best_match.get('title')} (TMDB ID: {best_match.get('id')}, "
+                    f"score: {best_score:.2f})"
+                )
+                return best_match
+            else:
+                logger.warning(
+                    f"No confident match for '{title}' (best score: {best_score:.2f} < {min_similarity})"
+                )
+                return None
 
         except NetworkError as e:
             logger.error(f"Error searching for '{title}': {e}")
