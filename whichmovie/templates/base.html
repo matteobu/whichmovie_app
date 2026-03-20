@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}WhichMovie{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,12 +16,12 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: #121212;
             min-height: 100vh;
             color: #fff;
         }
         a {
-            color: #e94560;
+            color: #d4a505;
             text-decoration: none;
         }
         a:hover {
@@ -39,15 +42,16 @@
             align-items: center;
         }
         .site-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.75rem;
+            letter-spacing: 0.05em;
         }
         .site-logo a {
             color: #fff;
             text-decoration: none;
         }
         .site-logo span {
-            color: #e94560;
+            color: #d4a505;
         }
         .nav-toggle {
             display: none;
@@ -90,11 +94,11 @@
             transition: all 0.2s;
         }
         .nav-btn-primary {
-            background: #e94560;
-            color: #fff !important;
+            background: #d4a505;
+            color: #121212 !important;
         }
         .nav-btn-primary:hover {
-            background: #ff6b6b;
+            background: #e5b80b;
         }
         .nav-btn-logout {
             background: none;
@@ -125,7 +129,7 @@
                 width: 75%;
                 max-width: 280px;
                 height: 100vh;
-                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+                background: #1a1a1a;
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 5rem 1.5rem 2rem;
@@ -210,7 +214,7 @@
             padding: 1rem 1rem 0;
             overflow: hidden;
             background-color: #fff;
-            color: #1a1a2e;
+            color: #121212;
             margin: 1rem auto;
         }
         @media (max-width: 768px) {
@@ -236,7 +240,7 @@
         .snackbar__actions button {
             background: none;
             border: none;
-            color: #e94560;
+            color: #d4a505;
             cursor: pointer;
             font-size: 0.85rem;
             font-weight: 600;

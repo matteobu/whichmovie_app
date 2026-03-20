@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="watchlist non auth user">
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="update top picks and DB">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/tmdb/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/tmdb/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/youtube/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/youtube/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whichmovie/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +194,7 @@
       <workItem from="1771577929887" duration="3869000" />
       <workItem from="1771600739304" duration="5271000" />
       <workItem from="1771834632768" duration="14000" />
-      <workItem from="1773994057295" duration="18979000" />
+      <workItem from="1773994057295" duration="20067000" />
     </task>
     <task id="LOCAL-00001" summary="Fix - Removed whichfilm app">
       <option name="closed" value="true" />
@@ -561,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774041975768</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="update top picks and DB">
+      <option name="closed" value="true" />
+      <created>1774046253353</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1774046253353</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,7 +582,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Add RottenTomatoesClient and MubiClient to YouTube data source integration" />
     <MESSAGE value="feat: Enhance YouTube video fetching with MubiClient integration and refactor fetching logic" />
     <MESSAGE value="feat: Refactor YouTube API client to use yt-dlp for video fetching and improve channel URL handling" />
     <MESSAGE value="feat: Add tests for RottenTomatoesClient and shared pytest fixtures" />
@@ -604,7 +606,8 @@
     <MESSAGE value="add watchlist" />
     <MESSAGE value="update mobile" />
     <MESSAGE value="watchlist non auth user" />
-    <option name="LAST_COMMIT_MESSAGE" value="watchlist non auth user" />
+    <MESSAGE value="update top picks and DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="update top picks and DB" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
