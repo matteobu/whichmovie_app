@@ -85,6 +85,34 @@
     .auth-link a {
         color: #e94560;
     }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        main {
+            padding: 1rem;
+            min-height: calc(100vh - 120px);
+        }
+        .auth-container {
+            padding: 1.5rem;
+        }
+        .auth-container h1 {
+            font-size: 1.5rem;
+        }
+        .subtitle {
+            margin-bottom: 1.5rem;
+        }
+        .form-group input {
+            padding: 0.875rem 1rem;
+            font-size: 16px; /* Prevents iOS zoom on focus */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .auth-container {
+            padding: 1.25rem;
+            border-radius: 12px;
+        }
+    }
 </style>
 {% endblock %}
 
