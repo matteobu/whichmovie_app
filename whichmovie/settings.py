@@ -161,7 +161,8 @@ ANYMAIL = {
     "MAILTRAP_API_TOKEN": config("MAILTRAP_API_TOKEN", default=""),
 }
 EMAIL_BACKEND = "anymail.backends.mailtrap.EmailBackend"
-DEFAULT_FROM_EMAIL = "hello@demomailtrap.co"
+DEFAULT_FROM_EMAIL = "hello@whichmovie.app"
+DEFAULT_REPLY_TO_EMAIL = "whichmovie@pm.me"
 
 # =============================================================================
 # INTERNATIONALIZATION
