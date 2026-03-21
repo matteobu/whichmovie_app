@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Terms of Service - WhichMovie{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .legal-page {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+    }
+    .legal-page h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    .legal-page .last-updated {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+    .legal-page h2 {
+        font-size: 1.25rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #d4a505;
+    }
+    .legal-page p, .legal-page li {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+    .legal-page ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .legal-page a {
+        color: #d4a505;
+    }
+    @media (max-width: 768px) {
+        .legal-page {
+            padding: 2rem 1rem;
+        }
+        .legal-page h1 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="legal-page">
+    <h1>Terms of Service</h1>
+    <p class="last-updated">Last updated: March 2025</p>
+
+    <p>Welcome to WhichMovie. By accessing or using our website, you agree to be bound by these Terms of Service.</p>
+
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing and using WhichMovie, you accept and agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, please do not use our service.</p>
+
+    <h2>2. Description of Service</h2>
+    <p>WhichMovie is a movie discovery platform that allows users to:</p>
+    <ul>
+        <li>Browse curated indie movies</li>
+        <li>Watch movie trailers via YouTube links</li>
+        <li>Create and manage a personal watchlist</li>
+        <li>View movie information from The Movie Database (TMDB)</li>
+    </ul>
+
+    <h2>3. User Accounts</h2>
+    <p>To access certain features, you must create an account. You agree to:</p>
+    <ul>
+        <li>Provide accurate and complete information</li>
+        <li>Maintain the security of your account credentials</li>
+        <li>Notify us immediately of any unauthorized access</li>
+        <li>Accept responsibility for all activities under your account</li>
+    </ul>
+
+    <h2>4. Acceptable Use</h2>
+    <p>You agree not to:</p>
+    <ul>
+        <li>Use the service for any unlawful purpose</li>
+        <li>Attempt to gain unauthorized access to any part of the service</li>
+        <li>Interfere with or disrupt the service or servers</li>
+        <li>Scrape, crawl, or use automated means to access the service without permission</li>
+        <li>Impersonate any person or entity</li>
+        <li>Upload or transmit viruses or malicious code</li>
+    </ul>
+
+    <h2>5. Intellectual Property</h2>
+    <p>The WhichMovie name, logo, and website design are our property. Movie data and images are provided by TMDB and are subject to their terms of use. Trailer content is hosted by YouTube and subject to YouTube's terms.</p>
+
+    <h2>6. Third-Party Content</h2>
+    <p>Our service displays content from third parties (TMDB, YouTube). We do not control and are not responsible for third-party content. Links to external sites are provided for convenience only.</p>
+
+    <h2>7. Disclaimer of Warranties</h2>
+    <p>The service is provided "as is" without warranties of any kind. We do not guarantee that:</p>
+    <ul>
+        <li>The service will be uninterrupted or error-free</li>
+        <li>Movie information is complete or accurate</li>
+        <li>The service will meet your specific requirements</li>
+    </ul>
+
+    <h2>8. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, WhichMovie shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the service.</p>
+
+    <h2>9. Account Termination</h2>
+    <p>We reserve the right to suspend or terminate your account at any time for violations of these terms or for any other reason at our discretion. You may also delete your account at any time.</p>
+
+    <h2>10. Changes to Terms</h2>
+    <p>We may modify these Terms of Service at any time. Continued use of the service after changes constitutes acceptance of the modified terms.</p>
+
+    <h2>11. Governing Law</h2>
+    <p>These terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles.</p>
+
+    <h2>12. Contact</h2>
+    <p>For questions about these Terms of Service, please contact us at legal@whichmovie.app.</p>
+</div>
+{% endblock %}

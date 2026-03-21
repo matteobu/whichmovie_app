@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy - WhichMovie{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .legal-page {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+    }
+    .legal-page h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    .legal-page .last-updated {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+    .legal-page h2 {
+        font-size: 1.25rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #d4a505;
+    }
+    .legal-page p, .legal-page li {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+    .legal-page ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .legal-page a {
+        color: #d4a505;
+    }
+    @media (max-width: 768px) {
+        .legal-page {
+            padding: 2rem 1rem;
+        }
+        .legal-page h1 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="legal-page">
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last updated: March 2025</p>
+
+    <p>WhichMovie ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our website.</p>
+
+    <h2>Information We Collect</h2>
+    <p>We collect information you provide directly to us:</p>
+    <ul>
+        <li><strong>Account Information:</strong> When you create an account, we collect your username, email address, and password.</li>
+        <li><strong>Watchlist Data:</strong> We store the movies you add to your watchlist.</li>
+        <li><strong>Usage Data:</strong> We automatically collect information about how you interact with our service.</li>
+    </ul>
+
+    <h2>Cookies</h2>
+    <p>We use cookies and similar technologies for:</p>
+    <ul>
+        <li><strong>Essential Cookies:</strong> Required for the website to function (session management, CSRF protection).</li>
+        <li><strong>Preference Cookies:</strong> Remember your choices and settings.</li>
+    </ul>
+    <p>You can control cookies through your browser settings. Note that disabling essential cookies may affect website functionality.</p>
+
+    <h2>How We Use Your Information</h2>
+    <p>We use the information we collect to:</p>
+    <ul>
+        <li>Provide, maintain, and improve our services</li>
+        <li>Process your account registration</li>
+        <li>Store your watchlist preferences</li>
+        <li>Send you technical notices and support messages</li>
+        <li>Send you newsletters and movie recommendations (with your consent)</li>
+        <li>Respond to your comments and questions</li>
+    </ul>
+
+    <h2>Email Communications</h2>
+    <p>With your explicit consent, we may send you:</p>
+    <ul>
+        <li><strong>Newsletters:</strong> Updates about new movies, curated recommendations, and platform news.</li>
+        <li><strong>Promotional emails:</strong> Special features or announcements.</li>
+    </ul>
+    <p>You can opt-in to receive newsletters during registration or in your account settings. You can unsubscribe at any time by:</p>
+    <ul>
+        <li>Clicking the "Unsubscribe" link in any email</li>
+        <li>Updating your preferences in your account settings</li>
+        <li>Contacting us at privacy@whichmovie.app</li>
+    </ul>
+    <p>Even if you unsubscribe from marketing emails, we may still send you essential transactional emails (password resets, account notifications).</p>
+
+    <h2>Third-Party Services</h2>
+    <p>We use the following third-party services:</p>
+    <ul>
+        <li><strong>The Movie Database (TMDB):</strong> We use TMDB's API to display movie information. Their privacy policy can be found at <a href="https://www.themoviedb.org/privacy-policy" target="_blank" rel="noopener">themoviedb.org/privacy-policy</a>.</li>
+        <li><strong>YouTube:</strong> Trailer links redirect to YouTube. Google's privacy policy applies when you visit YouTube.</li>
+    </ul>
+
+    <h2>Data Security</h2>
+    <p>We implement appropriate security measures to protect your personal information. However, no method of transmission over the Internet is 100% secure.</p>
+
+    <h2>Data Retention</h2>
+    <p>We retain your account information and watchlist data for as long as your account is active. You can request deletion of your account and associated data at any time.</p>
+
+    <h2>Your Rights</h2>
+    <p>You have the right to:</p>
+    <ul>
+        <li>Access your personal data</li>
+        <li>Correct inaccurate data</li>
+        <li>Request deletion of your data</li>
+        <li>Object to processing of your data</li>
+        <li>Export your data</li>
+    </ul>
+
+    <h2>Children's Privacy</h2>
+    <p>Our service is not intended for children under 13. We do not knowingly collect information from children under 13.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
+
+    <h2>Contact Us</h2>
+    <p>If you have questions about this Privacy Policy, please contact us at privacy@whichmovie.app.</p>
+</div>
+{% endblock %}
