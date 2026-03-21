@@ -40,6 +40,12 @@ def movie_list(request):
         )
     else:
         watchlist_ids = []
+
+    # Search by title
+    search_query = request.GET.get("q", "").strip()
+    if search_query:
+        movies = movies.filter(title__icontains=search_query)
+
     # Filter by year if provided
     year = request.GET.get("year")
     if year:
@@ -89,6 +95,7 @@ def movie_list(request):
         "selected_year": year,
         "selected_genre": genre,
         "selected_rating": rating,
+        "search_query": search_query,
     }
 
     return render(request, "movies/movie_list.html", context)
