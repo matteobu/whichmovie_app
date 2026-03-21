@@ -185,14 +185,6 @@
             }
         }
 
-        /* Footer */
-        .site-footer {
-            text-align: center;
-            padding: 2rem;
-            color: rgba(255,255,255,0.4);
-            font-size: 0.875rem;
-        }
-
         /* Snackbar Messages */
         .snackbar-wrapper {
             position: fixed;
@@ -534,6 +526,121 @@
                 justify-content: center;
             }
         }
+
+        /* Cookie Consent Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(30, 30, 30, 0.98);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            z-index: 999;
+            display: none;
+        }
+        .cookie-banner.show {
+            display: block;
+        }
+        .cookie-banner__content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .cookie-banner__text {
+            flex: 1;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+        .cookie-banner__text a {
+            color: #d4a505;
+        }
+        .cookie-banner__actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-shrink: 0;
+        }
+        .cookie-btn {
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .cookie-btn--accept {
+            background: #d4a505;
+            color: #121212;
+        }
+        .cookie-btn--accept:hover {
+            background: #e5b80b;
+        }
+        .cookie-btn--decline {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .cookie-btn--decline:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        @media (max-width: 600px) {
+            .cookie-banner {
+                padding: 1rem;
+            }
+            .cookie-banner__content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cookie-banner__actions {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.875rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #d4a505;
+            text-decoration: none;
+        }
+        .tmdb-attribution {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .tmdb-attribution img {
+            height: 16px;
+            opacity: 0.6;
+        }
     </style>
     {% block extra_styles %}{% endblock %}
 </head>
@@ -633,9 +740,54 @@
         </div>
     </div>
 
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-banner__content">
+            <p class="cookie-banner__text">
+                We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+                <a href="{% url 'privacy_policy' %}">Learn more</a>
+            </p>
+            <div class="cookie-banner__actions">
+                <button class="cookie-btn cookie-btn--decline" id="cookie-decline">Decline</button>
+                <button class="cookie-btn cookie-btn--accept" id="cookie-accept">Accept</button>
+            </div>
+        </div>
+    </div>
+
     <footer class="site-footer">
-        &copy; 2025 WhichMovie
+        <div class="footer-links">
+            <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+            <a href="{% url 'terms_of_service' %}">Terms of Service</a>
+        </div>
+        <p>&copy; 2025 WhichMovie</p>
+        <div class="tmdb-attribution">
+            <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="TMDB">
+            <span>This product uses the TMDB API but is not endorsed or certified by TMDB.</span>
+        </div>
     </footer>
+
+    <script>
+    // Cookie Consent
+    (function() {
+        const banner = document.getElementById('cookie-banner');
+        const acceptBtn = document.getElementById('cookie-accept');
+        const declineBtn = document.getElementById('cookie-decline');
+
+        if (!localStorage.getItem('cookieConsent')) {
+            banner.classList.add('show');
+        }
+
+        acceptBtn.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            banner.classList.remove('show');
+        });
+
+        declineBtn.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'declined');
+            banner.classList.remove('show');
+        });
+    })();
+    </script>
     <script src="{% static 'js/modal.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>

@@ -149,6 +149,9 @@ ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_RATE_LIMITS = False
+ACCOUNT_FORMS = {
+    "signup": "accounts.forms.CustomSignupForm",
+}
 
 # =============================================================================
 # EMAIL

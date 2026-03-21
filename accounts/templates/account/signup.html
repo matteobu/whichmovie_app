@@ -85,6 +85,34 @@
     .auth-link a {
         color: #d4a505;
     }
+    .form-checkbox {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+        cursor: pointer;
+    }
+    .form-checkbox input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+        accent-color: #d4a505;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+    .form-checkbox .checkbox-content {
+        flex: 1;
+    }
+    .form-checkbox .checkbox-label {
+        color: rgba(255,255,255,0.9);
+        font-size: 0.9rem;
+        display: block;
+    }
+    .form-checkbox .checkbox-help {
+        color: rgba(255,255,255,0.5);
+        font-size: 0.8rem;
+        margin-top: 0.25rem;
+    }
 
     /* Mobile Responsive */
     @media (max-width: 768px) {
@@ -179,6 +207,14 @@
             </ul>
             {% endif %}
         </div>
+
+        <label class="form-checkbox">
+            <input type="checkbox" name="newsletter_opt_in" id="id_newsletter_opt_in">
+            <div class="checkbox-content">
+                <span class="checkbox-label">Subscribe to newsletter</span>
+                <span class="checkbox-help">Receive movie recommendations and updates via email.</span>
+            </div>
+        </label>
 
         <button type="submit" class="auth-btn">Create Account</button>
     </form>

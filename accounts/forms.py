@@ -6,12 +6,14 @@ User = get_user_model()
 
 
 class CustomSignupForm(SignupForm):
-    first_name = forms.CharField(label="First name", max_length=100)
-    last_name = forms.CharField(label="Last name", max_length=100)
+    newsletter_opt_in = forms.BooleanField(
+        required=False,
+        label="Subscribe to newsletter",
+        help_text="Receive movie recommendations and updates via email.",
+    )
 
     def save(self, request):
         user = super().save(request)
-        user.first_name = self.cleaned_data.get("first_name")
-        user.last_name = self.cleaned_data.get("last_name")
+        user.newsletter_opt_in = self.cleaned_data.get("newsletter_opt_in", False)
         user.save()
         return user

@@ -12,4 +12,7 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),  # custom view for signup/profile
     path("accounts/password/change/", CustomPasswordChangeView.as_view()),
     path("accounts/", include("allauth.urls")),
+    # Legal pages
+    path("privacy/", views.privacy_policy, name="privacy_policy"),
+    path("terms/", views.terms_of_service, name="terms_of_service"),
 ]

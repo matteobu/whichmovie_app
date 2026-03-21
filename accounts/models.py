@@ -20,6 +20,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
+    newsletter_opt_in = models.BooleanField(default=False)
 
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["email"]

@@ -104,6 +104,48 @@
         background: rgba(255,255,255,0.1);
         border-color: rgba(255,255,255,0.2);
     }
+    .newsletter-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        background: rgba(255,255,255,0.03);
+        border-radius: 10px;
+        margin-top: 1.5rem;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    .newsletter-info h3 {
+        font-size: 0.95rem;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+    }
+    .newsletter-info p {
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.5);
+    }
+    .toggle-btn {
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: none;
+    }
+    .toggle-btn.subscribed {
+        background: rgba(212, 165, 5, 0.2);
+        color: #d4a505;
+    }
+    .toggle-btn.subscribed:hover {
+        background: rgba(212, 165, 5, 0.3);
+    }
+    .toggle-btn.unsubscribed {
+        background: #d4a505;
+        color: #121212;
+    }
+    .toggle-btn.unsubscribed:hover {
+        background: #e5b80b;
+    }
 
     /* Mobile Responsive */
     @media (max-width: 768px) {
@@ -132,6 +174,11 @@
             flex-direction: column;
             gap: 0.25rem;
             text-align: center;
+        }
+        .newsletter-toggle {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
         }
         .btn {
             padding: 0.875rem 1rem;
@@ -176,6 +223,22 @@
             <span class="info-label">Last Login</span>
             <span class="info-value">{{ user.last_login|date:"M d, Y H:i" }}</span>
         </div>
+    </div>
+
+    <div class="newsletter-toggle">
+        <div class="newsletter-info">
+            <h3>Newsletter</h3>
+            <p>Receive movie recommendations and updates via email.</p>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="toggle_newsletter">
+            {% if user.newsletter_opt_in %}
+            <button type="submit" class="toggle-btn subscribed">Subscribed</button>
+            {% else %}
+            <button type="submit" class="toggle-btn unsubscribed">Subscribe</button>
+            {% endif %}
+        </form>
     </div>
 
     <div class="actions">
