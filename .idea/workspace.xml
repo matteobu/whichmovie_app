@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="update default email settings for Mailtrap configuration">
-      <change beforePath="$PROJECT_DIR$/frontend/assets/js/modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/js/modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whichmovie/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/base.html" afterDir="false" />
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="add feedback modal for reporting movie issues and handle feedback submissions">
+      <change beforePath="$PROJECT_DIR$/contrib/youtube/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/youtube/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/tasks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,15 +194,7 @@
       <workItem from="1771600739304" duration="5271000" />
       <workItem from="1771834632768" duration="14000" />
       <workItem from="1773994057295" duration="20442000" />
-      <workItem from="1774089092809" duration="2999000" />
-    </task>
-    <task id="LOCAL-00004" summary="Fix - Update the DB Table to a more generic">
-      <option name="closed" value="true" />
-      <created>1761483021643</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1761483021643</updated>
+      <workItem from="1774089092809" duration="5557000" />
     </task>
     <task id="LOCAL-00005" summary="Refactor(integrations): Move to clients/ folder following Django best practices">
       <option name="closed" value="true" />
@@ -590,7 +580,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774092098740</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="add feedback modal for reporting movie issues and handle feedback submissions">
+      <option name="closed" value="true" />
+      <created>1774092669270</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1774092669270</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -608,7 +606,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Add mocked yt-dlp response fixtures for MubiClient and RottenTomatoesClient tests" />
     <MESSAGE value="feat: Add test suites for MubiClient and RottenTomatoesClient title extraction methods" />
     <MESSAGE value="feat: Add technical documentation and testing guide for WhichMovie app" />
     <MESSAGE value="feat: Add comprehensive code implementation guide for Movies app in README" />
@@ -633,19 +630,8 @@
     <MESSAGE value="add cookie consent banner and newsletter subscription feature" />
     <MESSAGE value="add newsletter opt-in feature to user admin and update footer year dynamically" />
     <MESSAGE value="update default email settings for Mailtrap configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="update default email settings for Mailtrap configuration" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="NONE" type="python-line">
-          <url>file://$PROJECT_DIR$/movies/tasks.py</url>
-          <line>17</line>
-          <log-expression expression="logger.info(f&quot;[UPDATED] {video['title']} ({video['year']})&quot;)&#10;&#10;        logger.info(f&quot;Task completed: {created_count} new, {updated_count} updated&quot;)&#10;&#10;    except Exception as e:&#10;        logger.error(f&quot;Error fetching YouTube videos: {e}&quot;, exc_info=True)&#10;        raise" language="Python" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="add feedback modal for reporting movie issues and handle feedback submissions" />
+    <option name="LAST_COMMIT_MESSAGE" value="add feedback modal for reporting movie issues and handle feedback submissions" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/whichmovie_app$python_manage_py_runserver.coverage" NAME="python manage.py runserver Coverage Results" MODIFIED="1763738952145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/docs" />

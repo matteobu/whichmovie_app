@@ -12,6 +12,7 @@ from dramatiq_crontab import cron
 from contrib.tmdb import TMDBClient
 from contrib.tmdb.api import extract_year_from_title
 from contrib.youtube import MubiClient
+from contrib.youtube.api import A24Client
 
 from .models import Movie
 
@@ -84,6 +85,19 @@ def _fetch_and_save_videos(client, source_name):
 #     """
 #     client = RottenTomatoesClient()
 #     _fetch_and_save_videos(client, "rotten_tomatoes")
+
+
+@cron("0 0 * * *")  # Run daily at midnight UTC
+@dramatiq.actor(max_retries=3)
+def fetch_a24_videos():
+    """
+    Cron Task: Fetch MUBI YouTube channel videos.
+
+    Fetches latest videos and saves to database.
+    Runs daily at 1 AM UTC (1 hour after RottenTomatoes fetch).
+    """
+    client = A24Client()
+    _fetch_and_save_videos(client, "a24")
 
 
 @cron("0 1 * * *")  # Run daily at 1 AM UTC (after YouTube fetch at midnight)

@@ -257,3 +257,64 @@ class MubiClient(YouTubeBaseClient):
     def get_videos(self):
         """Fetch videos from Mubi channel."""
         return self.get_data()
+
+
+class A24Client(YouTubeBaseClient):
+    """
+    A24 channel client.
+
+    Handles A24-specific title format.
+    A24 titles are either plain ("Materialists") or pipe-separated
+    ("Undertone | Official Trailer 2 HD | A24").
+    """
+
+    CHANNEL_URL = "https://www.youtube.com/@A24/videos"
+    CHANNEL_ID = "UCuPivVjnfNo4mb3Oog_frZg"
+
+    def _clean_title(self, title):
+        """
+        Extract movie title from A24 title format.
+
+        Formats:
+          - "Materialists" → "Materialists"
+          - "Undertone | Official Trailer 2 HD | A24" → "Undertone"
+
+        Skips podcasts, teasers, and non-movie content.
+
+        Args:
+            title (str): Video title
+
+        Returns:
+            str or None: Cleaned title, or None if invalid format
+        """
+        logger.debug(f"[A24Client] Raw title: {title}")
+
+        # Skip non-movie content
+        skip_keywords = [
+            "Teaser",
+            "Coming Soon",
+            "Podcast",
+            "Promo",
+            "Featurette",
+            "Clip",
+            "PSA",
+        ]
+        if any(kw in title for kw in skip_keywords):
+            logger.debug(f"[A24Client] Skipped: {title}")
+            return None
+
+        # Take everything before the first pipe
+        cleaned = title.split("|")[0].strip()
+
+        # Remove surrounding quotes
+        cleaned = cleaned.strip("\"'")
+
+        # Convert to title case
+        cleaned = cleaned.title()
+
+        logger.debug(f"[A24Client] Extracted title: {cleaned}")
+        return cleaned if cleaned else None
+
+    def get_videos(self):
+        """Fetch videos from A24 channel."""
+        return self.get_data()
