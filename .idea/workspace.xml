@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="add cookie consent banner and newsletter subscription feature">
-      <change beforePath="$PROJECT_DIR$/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/admin.py" afterDir="false" />
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="update default email settings for Mailtrap configuration">
+      <change beforePath="$PROJECT_DIR$/frontend/assets/js/modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/js/modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,23 +196,7 @@
       <workItem from="1771600739304" duration="5271000" />
       <workItem from="1771834632768" duration="14000" />
       <workItem from="1773994057295" duration="20442000" />
-      <workItem from="1774089092809" duration="1905000" />
-    </task>
-    <task id="LOCAL-00002" summary="Fix - Create a YT Film Info Models">
-      <option name="closed" value="true" />
-      <created>1761309259535</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1761309259535</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Fix - Youtube Service to get info from YT channel">
-      <option name="closed" value="true" />
-      <created>1761309286380</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1761309286380</updated>
+      <workItem from="1774089092809" duration="2999000" />
     </task>
     <task id="LOCAL-00004" summary="Fix - Update the DB Table to a more generic">
       <option name="closed" value="true" />
@@ -588,7 +574,23 @@
       <option name="project" value="LOCAL" />
       <updated>1774091402536</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="add newsletter opt-in feature to user admin and update footer year dynamically">
+      <option name="closed" value="true" />
+      <created>1774091572376</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1774091572376</updated>
+    </task>
+    <task id="LOCAL-00052" summary="update default email settings for Mailtrap configuration">
+      <option name="closed" value="true" />
+      <created>1774092098740</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1774092098740</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -606,8 +608,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Remove YouTubeClient alias and update references to RottenTomatoesClient in the codebase" />
-    <MESSAGE value="feat: Add unit tests for MubiClient methods and structure test suites" />
     <MESSAGE value="feat: Add mocked yt-dlp response fixtures for MubiClient and RottenTomatoesClient tests" />
     <MESSAGE value="feat: Add test suites for MubiClient and RottenTomatoesClient title extraction methods" />
     <MESSAGE value="feat: Add technical documentation and testing guide for WhichMovie app" />
@@ -631,7 +631,9 @@
     <MESSAGE value="refactor styles and update color scheme across templates" />
     <MESSAGE value="add movie detail modal and enhance movie card data attributes" />
     <MESSAGE value="add cookie consent banner and newsletter subscription feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="add cookie consent banner and newsletter subscription feature" />
+    <MESSAGE value="add newsletter opt-in feature to user admin and update footer year dynamically" />
+    <MESSAGE value="update default email settings for Mailtrap configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="update default email settings for Mailtrap configuration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMessage
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
@@ -123,3 +125,52 @@ def watchlist_page(request):
     }
 
     return render(request, "movies/watchlist.html", context)
+
+
+@require_POST
+def submit_feedback(request):
+    """Handle movie feedback submission and send email."""
+    import logging
+
+    logger = logging.getLogger(__name__)
+
+    movie_id = request.POST.get("movie_id")
+    movie_title = request.POST.get("movie_title")
+    message = request.POST.get("message")
+
+    if not message:
+        return JsonResponse({"success": False, "error": "Message is required"})
+
+    # Build email content
+    subject = f"Movie Feedback: {movie_title}"
+    body = f"""
+Movie Feedback Report
+=====================
+
+Movie: {movie_title}
+Movie ID: {movie_id}
+
+User Feedback:
+{message}
+
+---
+Sent from WhichMovie
+"""
+
+    recipient = getattr(settings, "DEFAULT_REPLY_TO_EMAIL", settings.DEFAULT_FROM_EMAIL)
+
+    try:
+        email = EmailMessage(
+            subject=subject,
+            body=body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[recipient],
+            reply_to=[recipient],
+        )
+        email.send()
+        logger.info(f"Feedback email sent for movie: {movie_title}")
+        return JsonResponse({"success": True})
+    except Exception as e:
+        logger.error(f"Failed to send feedback email: {e}")
+        print(f"Email error: {e}")  # This will show in console
+        return JsonResponse({"success": False, "error": str(e)})

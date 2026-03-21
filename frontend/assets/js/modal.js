@@ -240,6 +240,123 @@
         });
     });
 
+    // Feedback modal elements
+    const feedbackModal = document.getElementById('feedback-modal');
+    const feedbackClose = document.getElementById('feedback-close');
+    const feedbackForm = document.getElementById('feedback-form');
+    const feedbackMovieInfo = document.getElementById('feedback-movie-info');
+    const feedbackMovieId = document.getElementById('feedback-movie-id');
+    const feedbackMovieTitle = document.getElementById('feedback-movie-title');
+    const feedbackMessage = document.getElementById('feedback-message');
+    const feedbackSubmit = document.getElementById('feedback-submit');
+    const feedbackFormContainer = document.getElementById('feedback-form-container');
+    const feedbackSuccess = document.getElementById('feedback-success');
+    const modalFeedbackBtn = document.getElementById('modal-feedback');
+
+    let currentMovieTitle = '';
+
+    // Store movie title when modal opens
+    const originalOpenMovieModal = openMovieModal;
+    openMovieModal = function(movieData) {
+        currentMovieTitle = movieData.title || 'Unknown Title';
+        originalOpenMovieModal(movieData);
+    };
+
+    // Open feedback modal
+    function openFeedbackModal() {
+        if (!feedbackModal) return;
+
+        feedbackMovieInfo.textContent = 'Movie: ' + currentMovieTitle;
+        feedbackMovieId.value = currentMovieId;
+        feedbackMovieTitle.value = currentMovieTitle;
+        feedbackMessage.value = '';
+        feedbackFormContainer.style.display = 'block';
+        feedbackSuccess.style.display = 'none';
+        feedbackModal.classList.add('active');
+    }
+
+    // Close feedback modal
+    function closeFeedbackModal() {
+        if (!feedbackModal) return;
+        feedbackModal.classList.remove('active');
+    }
+
+    // Handle feedback form submission
+    function submitFeedback(e) {
+        e.preventDefault();
+
+        const message = feedbackMessage.value.trim();
+        if (!message) {
+            feedbackMessage.focus();
+            return;
+        }
+
+        feedbackSubmit.disabled = true;
+        feedbackSubmit.textContent = 'Sending...';
+
+        fetch('/movies/feedback/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: 'movie_id=' + encodeURIComponent(feedbackMovieId.value) +
+                  '&movie_title=' + encodeURIComponent(feedbackMovieTitle.value) +
+                  '&message=' + encodeURIComponent(message)
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            if (data.success) {
+                feedbackFormContainer.style.display = 'none';
+                feedbackSuccess.style.display = 'block';
+            } else {
+                alert('Failed to send feedback. Please try again.');
+            }
+        })
+        .catch(function(error) {
+            console.error('Error:', error);
+            alert('Failed to send feedback. Please try again.');
+        })
+        .finally(function() {
+            feedbackSubmit.disabled = false;
+            feedbackSubmit.textContent = 'Send Feedback';
+        });
+    }
+
+    // Feedback event listeners
+    if (modalFeedbackBtn) {
+        modalFeedbackBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openFeedbackModal();
+        });
+    }
+
+    if (feedbackClose) {
+        feedbackClose.addEventListener('click', closeFeedbackModal);
+    }
+
+    if (feedbackModal) {
+        feedbackModal.addEventListener('click', function(e) {
+            if (e.target === feedbackModal) {
+                closeFeedbackModal();
+            }
+        });
+    }
+
+    if (feedbackForm) {
+        feedbackForm.addEventListener('submit', submitFeedback);
+    }
+
+    // Close feedback modal on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && feedbackModal && feedbackModal.classList.contains('active')) {
+            closeFeedbackModal();
+        }
+    });
+
     // Expose functions globally if needed
     window.openMovieModal = openMovieModal;
     window.closeMovieModal = closeMovieModal;
