@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="refactor styles and update color scheme across templates">
-      <change afterPath="$PROJECT_DIR$/frontend/assets/js/modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/templates/movies/watchlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/watchlist.html" afterDir="false" />
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="add cookie consent banner and newsletter subscription feature">
+      <change beforePath="$PROJECT_DIR$/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,15 +194,7 @@
       <workItem from="1771600739304" duration="5271000" />
       <workItem from="1771834632768" duration="14000" />
       <workItem from="1773994057295" duration="20442000" />
-      <workItem from="1774089092809" duration="833000" />
-    </task>
-    <task id="LOCAL-00001" summary="Fix - Removed whichfilm app">
-      <option name="closed" value="true" />
-      <created>1761303137118</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1761303137118</updated>
+      <workItem from="1774089092809" duration="1905000" />
     </task>
     <task id="LOCAL-00002" summary="Fix - Create a YT Film Info Models">
       <option name="closed" value="true" />
@@ -576,7 +564,31 @@
       <option name="project" value="LOCAL" />
       <updated>1774047441839</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="add movie detail modal and enhance movie card data attributes">
+      <option name="closed" value="true" />
+      <created>1774090506131</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1774090506131</updated>
+    </task>
+    <task id="LOCAL-00049" summary="add cookie consent banner and newsletter subscription feature">
+      <option name="closed" value="true" />
+      <created>1774091396650</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1774091396650</updated>
+    </task>
+    <task id="LOCAL-00050" summary="add cookie consent banner and newsletter subscription feature">
+      <option name="closed" value="true" />
+      <created>1774091402536</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1774091402536</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -594,8 +606,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Refactor YouTube API client to use yt-dlp for video fetching and improve channel URL handling" />
-    <MESSAGE value="feat: Add tests for RottenTomatoesClient and shared pytest fixtures" />
     <MESSAGE value="feat: Remove YouTubeClient alias and update references to RottenTomatoesClient in the codebase" />
     <MESSAGE value="feat: Add unit tests for MubiClient methods and structure test suites" />
     <MESSAGE value="feat: Add mocked yt-dlp response fixtures for MubiClient and RottenTomatoesClient tests" />
@@ -619,7 +629,9 @@
     <MESSAGE value="watchlist non auth user" />
     <MESSAGE value="update top picks and DB" />
     <MESSAGE value="refactor styles and update color scheme across templates" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor styles and update color scheme across templates" />
+    <MESSAGE value="add movie detail modal and enhance movie card data attributes" />
+    <MESSAGE value="add cookie consent banner and newsletter subscription feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cookie consent banner and newsletter subscription feature" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
