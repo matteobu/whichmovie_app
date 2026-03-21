@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="update top picks and DB">
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="refactor styles and update color scheme across templates">
+      <change afterPath="$PROJECT_DIR$/frontend/assets/js/modal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/templates/movies/watchlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/watchlist.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" afterDir="false" />
     </list>
@@ -194,7 +197,8 @@
       <workItem from="1771577929887" duration="3869000" />
       <workItem from="1771600739304" duration="5271000" />
       <workItem from="1771834632768" duration="14000" />
-      <workItem from="1773994057295" duration="20067000" />
+      <workItem from="1773994057295" duration="20442000" />
+      <workItem from="1774089092809" duration="833000" />
     </task>
     <task id="LOCAL-00001" summary="Fix - Removed whichfilm app">
       <option name="closed" value="true" />
@@ -564,7 +568,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774046253353</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="refactor styles and update color scheme across templates">
+      <option name="closed" value="true" />
+      <created>1774047441839</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1774047441839</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,7 +594,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Enhance YouTube video fetching with MubiClient integration and refactor fetching logic" />
     <MESSAGE value="feat: Refactor YouTube API client to use yt-dlp for video fetching and improve channel URL handling" />
     <MESSAGE value="feat: Add tests for RottenTomatoesClient and shared pytest fixtures" />
     <MESSAGE value="feat: Remove YouTubeClient alias and update references to RottenTomatoesClient in the codebase" />
@@ -607,7 +618,8 @@
     <MESSAGE value="update mobile" />
     <MESSAGE value="watchlist non auth user" />
     <MESSAGE value="update top picks and DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="update top picks and DB" />
+    <MESSAGE value="refactor styles and update color scheme across templates" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor styles and update color scheme across templates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

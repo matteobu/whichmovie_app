@@ -299,7 +299,19 @@
 {% if movies %}
 <div class="movies-grid">
     {% for movie in movies %}
-    <div class="movie-card">
+    <div class="movie-card"
+         data-movie-id="{{ movie.id }}"
+         data-title="{{ movie.title }}"
+         data-overview="{{ movie.overview|default:'' }}"
+         data-poster="{{ movie.poster_path|default:'' }}"
+         data-backdrop="{{ movie.backdrop_path|default:'' }}"
+         data-year="{{ movie.release_date|date:'Y'|default:'' }}"
+         data-rating="{{ movie.vote_average|default:'' }}"
+         data-runtime="{{ movie.runtime|default:'' }}"
+         data-genres="{{ movie.genres|join:','|default:'' }}"
+         data-video-id="{{ movie.video_id|default:'' }}"
+         data-in-watchlist="{% if movie.id in watchlist_ids %}true{% else %}false{% endif %}"
+         style="cursor: pointer;">
         {% if movie.poster_path %}
         <img src="https://image.tmdb.org/t/p/w342{{ movie.poster_path }}" alt="{{ movie.title }}" class="movie-poster">
         {% else %}
