@@ -161,8 +161,8 @@ ACCOUNT_FORMS = {
 ANYMAIL = {
     "MAILTRAP_API_TOKEN": config("MAILTRAP_API_TOKEN", default=""),
 }
-# EMAIL_BACKEND = "anymail.backends.mailtrap.EmailBackend"
-EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
+EMAIL_BACKEND = "anymail.backends.mailtrap.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
 
 DEFAULT_FROM_EMAIL = "hello@whichmovie.app"
 DEFAULT_REPLY_TO_EMAIL = "whichmovie@pm.me"

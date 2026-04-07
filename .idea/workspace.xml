@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="fix email backend">
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="feat: add reCAPTCHA to signup form for enhanced spam protection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whichmovie/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,15 +197,7 @@
       <workItem from="1774255722936" duration="9000" />
       <workItem from="1775494554615" duration="342000" />
       <workItem from="1775546208700" duration="597000" />
-      <workItem from="1775567228035" duration="365000" />
-    </task>
-    <task id="LOCAL-00009" summary="feat: Initialize Dramatiq and configure broker settings">
-      <option name="closed" value="true" />
-      <created>1761917456645</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1761917456645</updated>
+      <workItem from="1775567228035" duration="668000" />
     </task>
     <task id="LOCAL-00010" summary="feat: Add Dramatiq crontab integration and new migration for Movie model">
       <option name="closed" value="true" />
@@ -595,7 +583,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775494667478</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="feat: add reCAPTCHA to signup form for enhanced spam protection">
+      <option name="closed" value="true" />
+      <created>1775567724277</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1775567724277</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +609,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Refactor test files and update workspace configuration" />
     <MESSAGE value="feat: Refactor test cases to use fixtures for MubiClient and enhance integration tests" />
     <MESSAGE value="feat: Refactor tests for MubiClient and RottenTomatoesClient to use parameterized cases" />
     <MESSAGE value="refactor: Clean up code formatting and improve consistency across files" />
@@ -638,7 +633,8 @@
     <MESSAGE value="add search functionality to movie list and enhance admin movie management" />
     <MESSAGE value="correct typo in navigation link from 'Wishlist' to 'Watchlist'" />
     <MESSAGE value="fix email backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix email backend" />
+    <MESSAGE value="feat: add reCAPTCHA to signup form for enhanced spam protection" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add reCAPTCHA to signup form for enhanced spam protection" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/whichmovie_app$python_manage_py_runserver.coverage" NAME="python manage.py runserver Coverage Results" MODIFIED="1763738952145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/docs" />
