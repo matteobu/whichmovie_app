@@ -141,6 +141,17 @@
             border-radius: 12px;
         }
     }
+
+    /* Honeypot field - hidden from real users */
+    .ohnohoney {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0;
+        width: 0;
+        z-index: -1;
+    }
 </style>
 {% endblock %}
 
@@ -151,6 +162,12 @@
 
     <form method="post">
         {% csrf_token %}
+
+        <!-- Honeypot field - hidden from users, bots will fill it -->
+        <div class="ohnohoney">
+            <label for="id_website">Website</label>
+            {{ form.website }}
+        </div>
 
         {% if form.non_field_errors %}
         <ul class="errorlist">
@@ -215,6 +232,17 @@
                 <span class="checkbox-help">Receive movie recommendations and updates via email.</span>
             </div>
         </label>
+
+        <div class="form-group">
+            {{ form.captcha }}
+            {% if form.captcha.errors %}
+            <ul class="errorlist">
+                {% for error in form.captcha.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
 
         <button type="submit" class="auth-btn">Create Account</button>
     </form>

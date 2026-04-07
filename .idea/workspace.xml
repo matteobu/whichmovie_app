@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="add feedback modal for reporting movie issues and handle feedback submissions">
-      <change beforePath="$PROJECT_DIR$/contrib/youtube/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/youtube/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/tasks.py" afterDir="false" />
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="fix email backend">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whichmovie/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,39 +197,11 @@
       <workItem from="1771600739304" duration="5271000" />
       <workItem from="1771834632768" duration="14000" />
       <workItem from="1773994057295" duration="20442000" />
-      <workItem from="1774089092809" duration="5557000" />
-    </task>
-    <task id="LOCAL-00005" summary="Refactor(integrations): Move to clients/ folder following Django best practices">
-      <option name="closed" value="true" />
-      <created>1761491365936</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1761491365936</updated>
-    </task>
-    <task id="LOCAL-00006" summary="refactor: Rename Django project folder from whichfilm_platform to whichfilm">
-      <option name="closed" value="true" />
-      <created>1761493290171</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1761493290171</updated>
-    </task>
-    <task id="LOCAL-00007" summary="fix: Update Django settings module from whichfilm to whichmovie">
-      <option name="closed" value="true" />
-      <created>1761915965444</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1761915965444</updated>
-    </task>
-    <task id="LOCAL-00008" summary="feat: Add initial migration and models for Movie and Film">
-      <option name="closed" value="true" />
-      <created>1761915997541</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1761915997541</updated>
+      <workItem from="1774089092809" duration="7776000" />
+      <workItem from="1774255722936" duration="9000" />
+      <workItem from="1775494554615" duration="342000" />
+      <workItem from="1775546208700" duration="597000" />
+      <workItem from="1775567228035" duration="365000" />
     </task>
     <task id="LOCAL-00009" summary="feat: Initialize Dramatiq and configure broker settings">
       <option name="closed" value="true" />
@@ -588,7 +563,39 @@
       <option name="project" value="LOCAL" />
       <updated>1774092669270</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="add A24Client to fetch and clean video titles from A24 YouTube channel">
+      <option name="closed" value="true" />
+      <created>1774108578006</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1774108578006</updated>
+    </task>
+    <task id="LOCAL-00055" summary="add search functionality to movie list and enhance admin movie management">
+      <option name="closed" value="true" />
+      <created>1774109947534</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1774109947535</updated>
+    </task>
+    <task id="LOCAL-00056" summary="correct typo in navigation link from 'Wishlist' to 'Watchlist'">
+      <option name="closed" value="true" />
+      <created>1774110183488</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1774110183488</updated>
+    </task>
+    <task id="LOCAL-00057" summary="fix email backend">
+      <option name="closed" value="true" />
+      <created>1775494667478</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1775494667478</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -606,10 +613,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Add test suites for MubiClient and RottenTomatoesClient title extraction methods" />
-    <MESSAGE value="feat: Add technical documentation and testing guide for WhichMovie app" />
-    <MESSAGE value="feat: Add comprehensive code implementation guide for Movies app in README" />
-    <MESSAGE value="feat: Add comprehensive README documentation for WhichMovie project setup and configuration" />
     <MESSAGE value="feat: Refactor test files and update workspace configuration" />
     <MESSAGE value="feat: Refactor test cases to use fixtures for MubiClient and enhance integration tests" />
     <MESSAGE value="feat: Refactor tests for MubiClient and RottenTomatoesClient to use parameterized cases" />
@@ -631,7 +634,11 @@
     <MESSAGE value="add newsletter opt-in feature to user admin and update footer year dynamically" />
     <MESSAGE value="update default email settings for Mailtrap configuration" />
     <MESSAGE value="add feedback modal for reporting movie issues and handle feedback submissions" />
-    <option name="LAST_COMMIT_MESSAGE" value="add feedback modal for reporting movie issues and handle feedback submissions" />
+    <MESSAGE value="add A24Client to fetch and clean video titles from A24 YouTube channel" />
+    <MESSAGE value="add search functionality to movie list and enhance admin movie management" />
+    <MESSAGE value="correct typo in navigation link from 'Wishlist' to 'Watchlist'" />
+    <MESSAGE value="fix email backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix email backend" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/whichmovie_app$python_manage_py_runserver.coverage" NAME="python manage.py runserver Coverage Results" MODIFIED="1763738952145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/docs" />

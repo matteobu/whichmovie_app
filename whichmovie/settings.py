@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "anymail",
+    "django_recaptcha",
 ]
 
 # =============================================================================
@@ -202,3 +203,10 @@ DRAMATIQ_BROKER = {
         "dramatiq.middleware.Callbacks",
     ],
 }
+
+# =============================================================================
+# RECAPTCHA
+# =============================================================================
+
+RECAPTCHA_PUBLIC_KEY = config("RECAPTCHA_PUBLIC_KEY", default="")
+RECAPTCHA_PRIVATE_KEY = config("RECAPTCHA_PRIVATE_KEY", default="")
