@@ -228,6 +228,34 @@ wheels = [
 ]
 
 [[package]]
+name = "django-allauth"
+version = "65.15.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "asgiref" },
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/01/91/826ec2c0e81b36ed392995b23604cfb3bb993b6ee66017898c25d2fc33f0/django_allauth-65.15.1.tar.gz", hash = "sha256:94c5b9df0c3458019613983ba9e938518acf5c2e4cc6e0f262fc3684ffe45a95", size = 2216647, upload-time = "2026-04-02T09:18:57.62Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ef/20/a6cfe9d5b03bbc76af92060c86682c49df1b8a7a924179da3d20de71dd3a/django_allauth-65.15.1-py3-none-any.whl", hash = "sha256:c32a1031f5601cb66b0aba276fb482d5d1460045a8094795a4db2af0231ee432", size = 2023723, upload-time = "2026-04-02T09:18:33.177Z" },
+]
+
+[[package]]
+name = "django-anymail"
+version = "14.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+    { name = "idna" },
+    { name = "requests" },
+    { name = "urllib3" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f4/cb/25aa288f7ce37331d0ebe0321f3a3079add297b037d6d4b4b363bf080e0b/django_anymail-14.0.tar.gz", hash = "sha256:ca42e52da62d2c96ce92412f9d68ef6d2067d96a384096b6e932d6a247e9fd61", size = 106257, upload-time = "2025-12-18T01:36:07.944Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/81/83/6d92a06dba4ef471aa1bbbe2e1461103800beea6a4bf95ac5f3d0f21e167/django_anymail-14.0-py3-none-any.whl", hash = "sha256:98e5575bcff231952a92117b7d0a4dd37fab582333a343de302d415a31dc72b1", size = 146119, upload-time = "2025-12-18T01:36:06.612Z" },
+]
+
+[[package]]
 name = "django-dramatiq"
 version = "0.14.0"
 source = { registry = "https://pypi.org/simple" }
@@ -238,6 +266,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/89/20/74c7225bc54495e65a3675b34ee65dfb5a4795877c715e6643474998c60d/django_dramatiq-0.14.0.tar.gz", hash = "sha256:dd957fa3c3d5106830ce90f10f72a8f07249643c5f35ccfaee1b9a79f7f5d6dd", size = 15659, upload-time = "2025-07-23T18:54:56.71Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/11/41/fe143b92023a6ceb2ff0165d98a058479ac8e8af35cba1cf31c1b1cd4db1/django_dramatiq-0.14.0-py3-none-any.whl", hash = "sha256:78da4a5cccecf7aa099bf66a6d706269f2d0541056a4e9cdc1e54a043f38f4e1", size = 12506, upload-time = "2025-07-23T18:54:55.676Z" },
+]
+
+[[package]]
+name = "django-recaptcha"
+version = "4.1.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/bd/a2/480cd2df8031c30afe0d67b0a5e6299ced20f2e65135a3c160c4031d7052/django_recaptcha-4.1.0.tar.gz", hash = "sha256:73097b958733f65b729d4e4630c51fc2bf147aca6f026017d18898dfc25cb4c5", size = 28676, upload-time = "2025-03-28T13:52:26.589Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8b/e7/0765f98e4953e26573512284995648c439b0eb252877b655683d28c90be2/django_recaptcha-4.1.0-py3-none-any.whl", hash = "sha256:463aa65967e973de466b28ce8e8b6abb2faffb1ce0c7faa1bf0e5b041e0497cb", size = 39473, upload-time = "2025-03-28T13:52:24.92Z" },
 ]
 
 [[package]]
@@ -918,7 +958,10 @@ version = "1.0.0"
 source = { virtual = "." }
 dependencies = [
     { name = "django" },
+    { name = "django-allauth" },
+    { name = "django-anymail" },
     { name = "django-dramatiq" },
+    { name = "django-recaptcha" },
     { name = "djangorestframework" },
     { name = "dramatiq", extra = ["redis", "watch"] },
     { name = "dramatiq-crontab" },
@@ -944,7 +987,10 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "django", specifier = ">=6.0" },
+    { name = "django-allauth", specifier = ">=65.0.0" },
+    { name = "django-anymail", extras = ["mailtrap"], specifier = ">=14.0" },
     { name = "django-dramatiq", specifier = ">=0.13.0" },
+    { name = "django-recaptcha", specifier = ">=4.0.0" },
     { name = "djangorestframework", specifier = ">=3.14.0" },
     { name = "dramatiq", extras = ["redis", "watch"], specifier = ">=1.18.0" },
     { name = "dramatiq-crontab", specifier = ">=1.0.11" },

@@ -149,9 +149,14 @@ ACCOUNT_LOGIN_METHODS = {"username"}
 ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_RATE_LIMITS = False
+ACCOUNT_RATE_LIMITS = {
+    "signup": "5/h/ip",
+    "reset_password": "5/h/ip",
+    "reset_password_from_key": "5/h/ip",
+}
 ACCOUNT_FORMS = {
     "signup": "accounts.forms.CustomSignupForm",
+    "reset_password": "accounts.forms.CustomResetPasswordForm",
 }
 
 # =============================================================================
@@ -210,3 +215,7 @@ DRAMATIQ_BROKER = {
 
 RECAPTCHA_PUBLIC_KEY = config("RECAPTCHA_PUBLIC_KEY", default="")
 RECAPTCHA_PRIVATE_KEY = config("RECAPTCHA_PRIVATE_KEY", default="")
+# Stricter CAPTCHA settings to combat spam
+RECAPTCHA_REQUIRED_SCORE = (
+    0.7  # Higher score = stricter (0.0 to 1.0, where 1.0 is very likely a human)
+)
