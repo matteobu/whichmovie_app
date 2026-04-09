@@ -244,7 +244,10 @@ class TMDBClient(BaseClient):
             dict or None: Full movie details including runtime, genres, etc.
         """
         try:
-            response = self._make_request(f"/movie/{tmdb_id}")
+            response = self._make_request(
+                f"/movie/{tmdb_id}",
+                params={"append_to_response": "watch/providers"},
+            )
 
             # Extract genre names from genre objects
             genres = [g["name"] for g in response.get("genres", [])]
@@ -254,6 +257,17 @@ class TMDBClient(BaseClient):
                 c["iso_3166_1"] for c in response.get("production_countries", [])
             ]
 
+            providers_results = response.get("watch/providers", {}).get("results", {})
+            watch_providers = {
+                country: {
+                    "flatrate": [
+                        {"name": p["provider_name"], "logo": p["logo_path"]}
+                        for p in data.get("flatrate", [])
+                    ],
+                    "link": data.get("link"),
+                }
+                for country, data in providers_results.items()
+            }
             return {
                 "id": response.get("id"),
                 "title": response.get("title"),
@@ -268,6 +282,7 @@ class TMDBClient(BaseClient):
                 "popularity": response.get("popularity"),
                 "original_language": response.get("original_language"),
                 "production_countries": production_countries,
+                "watch_providers": watch_providers,
             }
         except NetworkError as e:
             logger.error(f"Error fetching movie details for TMDB ID {tmdb_id}: {e}")

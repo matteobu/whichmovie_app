@@ -12,6 +12,11 @@
     const modalOverview = document.getElementById('modal-overview');
     const modalTrailer = document.getElementById('modal-trailer');
     const modalWatchlist = document.getElementById('modal-watchlist');
+    const modalProviders = document.getElementById('modal-providers');
+    const modalProvidersCountry = document.getElementById('modal-providers-country');
+    const modalProvidersList = document.getElementById('modal-providers-list');
+
+    let currentWatchProviders = {};
 
     let currentMovieId = null;
 
@@ -97,9 +102,65 @@
         const inWatchlist = movieData.inWatchlist === 'true' || movieData.inWatchlist === true;
         updateWatchlistButton(inWatchlist);
 
+        // Set watch providers
+        try {
+            currentWatchProviders = movieData.watchProviders ? JSON.parse(movieData.watchProviders) : {};
+        } catch (e) {
+            currentWatchProviders = {};
+        }
+        renderProviders();
+
         // Show modal
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
+    }
+
+    // Render watch providers for the selected country
+    function renderProviders() {
+        if (!modalProviders) return;
+
+        const countries = Object.keys(currentWatchProviders);
+        if (countries.length === 0) {
+            modalProviders.style.display = 'none';
+            return;
+        }
+
+        // Populate country selector (only on first render or when providers change)
+        const userCountry = (navigator.language || 'en-US').split('-')[1] || 'US';
+        const preferred = countries.includes(userCountry) ? userCountry : countries[0];
+
+        if (modalProvidersCountry.dataset.populated !== 'true') {
+            modalProvidersCountry.innerHTML = '';
+            countries.forEach(function(code) {
+                const opt = document.createElement('option');
+                opt.value = code;
+                opt.textContent = code;
+                if (code === preferred) opt.selected = true;
+                modalProvidersCountry.appendChild(opt);
+            });
+            modalProvidersCountry.dataset.populated = 'true';
+        }
+
+        renderProviderList(modalProvidersCountry.value || preferred);
+        modalProviders.style.display = 'block';
+    }
+
+    function renderProviderList(countryCode) {
+        if (!modalProvidersList) return;
+        const data = currentWatchProviders[countryCode];
+        const flatrate = (data && data.flatrate) || [];
+
+        if (flatrate.length === 0) {
+            modalProvidersList.innerHTML = '<span class="modal-providers-none">Not available for streaming in this region.</span>';
+            return;
+        }
+
+        modalProvidersList.innerHTML = flatrate.map(function(p) {
+            const logo = p.logo ? 'https://image.tmdb.org/t/p/original' + p.logo : '';
+            return logo
+                ? '<div class="modal-provider"><img src="' + logo + '" alt="' + p.name + '" title="' + p.name + '"><span class="modal-provider-name">' + p.name + '</span></div>'
+                : '<div class="modal-provider"><span class="modal-provider-name">' + p.name + '</span></div>';
+        }).join('');
     }
 
     // Close modal
@@ -108,6 +169,9 @@
         modal.classList.remove('active');
         document.body.style.overflow = '';
         currentMovieId = null;
+        currentWatchProviders = {};
+        if (modalProvidersCountry) modalProvidersCountry.dataset.populated = '';
+        if (modalProviders) modalProviders.style.display = 'none';
     }
 
     // Update watchlist button appearance
@@ -189,6 +253,13 @@
             }
         });
 
+        // Country selector for watch providers
+        if (modalProvidersCountry) {
+            modalProvidersCountry.addEventListener('change', function() {
+                renderProviderList(this.value);
+            });
+        }
+
         // Watchlist button in modal
         if (modalWatchlist) {
             modalWatchlist.addEventListener('click', function(e) {
@@ -230,7 +301,8 @@
                 runtime: card.dataset.runtime,
                 genres: card.dataset.genres,
                 videoId: card.dataset.videoId,
-                inWatchlist: card.dataset.inWatchlist
+                inWatchlist: card.dataset.inWatchlist,
+                watchProviders: card.dataset.watchProviders
             };
 
             // Only open if we have movie data

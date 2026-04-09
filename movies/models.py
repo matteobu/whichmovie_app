@@ -43,6 +43,7 @@ class Movie(models.Model):
     production_countries = models.JSONField(
         blank=True, null=True
     )  # List of country codes
+    watch_providers = models.JSONField(default=dict, blank=True)
 
     # Metadata
     created_at = models.DateTimeField(auto_now_add=True)

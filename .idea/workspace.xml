@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="feat: add reCAPTCHA to signup form for enhanced spam protection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contrib/tmdb/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/tmdb/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/assets/js/modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/js/modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movies/templates/movies/movie_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whichmovie/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,6 +203,7 @@
       <workItem from="1775494554615" duration="342000" />
       <workItem from="1775546208700" duration="597000" />
       <workItem from="1775567228035" duration="668000" />
+      <workItem from="1775728689200" duration="1248000" />
     </task>
     <task id="LOCAL-00010" summary="feat: Add Dramatiq crontab integration and new migration for Movie model">
       <option name="closed" value="true" />

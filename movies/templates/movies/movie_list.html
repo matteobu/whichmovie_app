@@ -1,5 +1,5 @@
 {% extends "movies/base.html" %}
-{% load static %}
+{% load static movie_extras %}
 
 {% block title %}Browse Movies - WhichMovie{% endblock %}
 
@@ -329,6 +329,7 @@
          data-runtime="{{ movie.runtime|default:'' }}"
          data-genres="{{ movie.genres|join:','|default:'' }}"
          data-video-id="{{ movie.video_id|default:'' }}"
+         data-watch-providers="{{ movie.watch_providers|to_json }}"
          data-in-watchlist="{% if movie.id in watchlist_ids %}true{% else %}false{% endif %}"
          style="cursor: pointer;">
         {% if movie.poster_path %}

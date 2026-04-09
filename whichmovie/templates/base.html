@@ -447,6 +447,70 @@
             line-height: 1.6;
             margin-bottom: 1.25rem;
         }
+        .modal-providers {
+            margin-bottom: 1.25rem;
+        }
+        .modal-providers-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+        }
+        .modal-providers-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .modal-providers-country {
+            padding: 0.2rem 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+        .modal-providers-country:focus {
+            outline: none;
+            border-color: #d4a505;
+        }
+        .modal-providers-country option {
+            background: #1a1a1a;
+        }
+        .modal-providers-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .modal-provider {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .modal-provider img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .modal-provider-name {
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            max-width: 48px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .modal-providers-none {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.35);
+            font-style: italic;
+        }
         .modal-actions {
             display: flex;
             gap: 0.75rem;
@@ -871,6 +935,13 @@
                     <div class="modal-meta" id="modal-meta"></div>
                     <div class="modal-genres" id="modal-genres"></div>
                     <p class="modal-overview" id="modal-overview"></p>
+                    <div class="modal-providers" id="modal-providers" style="display:none;">
+                        <div class="modal-providers-header">
+                            <span class="modal-providers-label">Stream in</span>
+                            <select class="modal-providers-country" id="modal-providers-country"></select>
+                        </div>
+                        <div class="modal-providers-list" id="modal-providers-list"></div>
+                    </div>
                     <div class="modal-actions">
                         <a class="modal-trailer-btn" id="modal-trailer" href="" target="_blank">
                             <i class="ti ti-player-play"></i> Watch Trailer
