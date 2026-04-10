@@ -15,6 +15,7 @@
     const modalProviders = document.getElementById('modal-providers');
     const modalProvidersCountry = document.getElementById('modal-providers-country');
     const modalProvidersList = document.getElementById('modal-providers-list');
+const modalProvidersHeader = document.getElementById('modal-providers-header');
 
     let currentWatchProviders = {};
 
@@ -119,22 +120,29 @@
     function renderProviders() {
         if (!modalProviders) return;
 
-        const countries = Object.keys(currentWatchProviders);
+        const countries = Object.keys(currentWatchProviders).filter(function(code) {
+            return currentWatchProviders[code].flatrate && currentWatchProviders[code].flatrate.length > 0;
+        });
         if (countries.length === 0) {
-            modalProviders.style.display = 'none';
+            modalProvidersHeader.style.display = 'none';
+            modalProvidersList.innerHTML = '<span class="modal-providers-none">No available streaming.</span>';
             return;
         }
+
+        modalProvidersHeader.style.display = '';
+        modalProvidersList.style.display = 'flex';
 
         // Populate country selector (only on first render or when providers change)
         const userCountry = (navigator.language || 'en-US').split('-')[1] || 'US';
         const preferred = countries.includes(userCountry) ? userCountry : countries[0];
 
         if (modalProvidersCountry.dataset.populated !== 'true') {
+            const regionNames = new Intl.DisplayNames([navigator.language || 'en'], { type: 'region' });
             modalProvidersCountry.innerHTML = '';
             countries.forEach(function(code) {
                 const opt = document.createElement('option');
                 opt.value = code;
-                opt.textContent = code;
+                opt.textContent = regionNames.of(code) || code;
                 if (code === preferred) opt.selected = true;
                 modalProvidersCountry.appendChild(opt);
             });
@@ -142,7 +150,6 @@
         }
 
         renderProviderList(modalProvidersCountry.value || preferred);
-        modalProviders.style.display = 'block';
     }
 
     function renderProviderList(countryCode) {
@@ -171,7 +178,7 @@
         currentMovieId = null;
         currentWatchProviders = {};
         if (modalProvidersCountry) modalProvidersCountry.dataset.populated = '';
-        if (modalProviders) modalProviders.style.display = 'none';
+        modalProvidersList.style.display = 'block';
     }
 
     // Update watchlist button appearance

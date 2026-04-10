@@ -448,7 +448,11 @@
             margin-bottom: 1.25rem;
         }
         .modal-providers {
-            margin-bottom: 1.25rem;
+            margin-top: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem;
+            border: 1px solid rgba(241, 241, 241, 0.1);
+            border-radius: 0.75rem;
         }
         .modal-providers-header {
             display: flex;
@@ -946,9 +950,9 @@
                             <i class="ti ti-flag"></i> <span>Report Issue</span>
                         </button>
                     </div>
-                    <div class="modal-providers" id="modal-providers" style="display:none;">
-                        <div class="modal-providers-header">
-                            <span class="modal-providers-label">Stream in</span>
+                    <div class="modal-providers" id="modal-providers">
+                        <div class="modal-providers-header" id="modal-providers-header">
+                            <span class="modal-providers-label" id="modal-providers-label">Stream in</span>
                             <select class="modal-providers-country" id="modal-providers-country"></select>
                         </div>
                         <div class="modal-providers-list" id="modal-providers-list"></div>

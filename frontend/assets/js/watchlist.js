@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle watchlist button clicks
     document.querySelectorAll('.watchlist-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('clicxk', function() {
             const movieId = this.dataset.movieId;
             const button = this;
 
