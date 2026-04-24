@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="feat: display last added movies on homepage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/templates/whichmovie/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whichmovie/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,15 +202,7 @@
       <workItem from="1775567228035" duration="668000" />
       <workItem from="1775728689200" duration="2206000" />
       <workItem from="1775814307148" duration="9494000" />
-      <workItem from="1777052813403" duration="2475000" />
-    </task>
-    <task id="LOCAL-00015" summary="feat: Update movie list display with TMDB enrichment and improved layout">
-      <option name="closed" value="true" />
-      <created>1761921045700</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1761921045700</updated>
+      <workItem from="1777052813403" duration="3256000" />
     </task>
     <task id="LOCAL-00016" summary="feat: Update movie list layout and enhance title for clarity">
       <option name="closed" value="true" />
@@ -594,7 +588,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777055291453</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="feat: display last added movies on homepage">
+      <option name="closed" value="true" />
+      <created>1777055650062</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1777055650062</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -221,38 +221,4 @@
     </div>
 </section>
 {% endif %}
-
-{% if top_week %}
-<section class="picks-section">
-    <div class="picks-header">
-        <h2>Top Picks This Week</h2>
-    </div>
-    <div class="picks-grid">
-        {% for movie in top_week %}
-        <div class="pick-card"
-             data-movie-id="{{ movie.id }}"
-             data-title="{{ movie.title }}"
-             data-overview="{{ movie.overview|default:'' }}"
-             data-poster="{{ movie.poster_path|default:'' }}"
-             data-backdrop="{{ movie.backdrop_path|default:'' }}"
-             data-year="{{ movie.release_date|date:'Y'|default:'' }}"
-             data-rating="{{ movie.vote_average|default:'' }}"
-             data-runtime="{{ movie.runtime|default:'' }}"
-             data-genres="{{ movie.genres|join:','|default:'' }}"
-             data-video-id="{{ movie.video_id|default:'' }}"
-             data-in-watchlist="false"
-             style="cursor: pointer;">
-            <img src="https://image.tmdb.org/t/p/w342{{ movie.poster_path }}" alt="{{ movie.title }}" class="pick-poster">
-            <div class="pick-info">
-                <h3 class="pick-title">{{ movie.title }}</h3>
-                <div class="pick-meta">
-                    {% if movie.release_date %}<span>{{ movie.release_date|date:"Y" }}</span>{% endif %}
-                    {% if movie.vote_average %}<span class="pick-rating">★ {{ movie.vote_average|floatformat:1 }}</span>{% endif %}
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
-{% endif %}
 {% endblock %}
