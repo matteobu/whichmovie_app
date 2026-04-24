@@ -5,6 +5,7 @@ Defines async tasks and cron jobs for movie data fetching and processing.
 """
 
 import logging
+from datetime import timedelta, timezone
 
 import dramatiq
 from dramatiq_crontab import cron
@@ -203,4 +204,56 @@ def enrich_movies_with_tmdb():
 
     except Exception as e:
         logger.error(f"Error in enrich_movies_with_tmdb: {e}", exc_info=True)
+        raise
+
+
+@cron("0 3 * * *")  # Run daily at 3 AM UTC (after Enrichment at 2 AM)
+@dramatiq.actor(max_retries=3)
+def update_movies_with_tmdb():
+    logger.info("Starting TMDB updating task...")
+
+    try:
+        # Get all movies with tmdb_id released in the last four months
+        four_month_ago = timezone.now() - timedelta(days=120)
+        movies_to_update = Movie.objects.filter(
+            tmdb_id__isnull=False, release_date__gte=four_month_ago
+        )
+
+        if not movies_to_update.exists():
+            logger.info("No movies to enrich")
+            return
+
+        logger.info(f"Found {movies_to_update.count()} movies to update")
+
+        # Initialize TMDB client
+        client = TMDBClient()
+
+        updated_count = 0
+
+        for movie in movies_to_update:
+            try:
+                tmdb_data = client.get_movie_details(movie.tmdb_id)
+
+                if tmdb_data:
+                    movie.vote_average = tmdb_data.get("vote_average")
+                    movie.watch_providers = tmdb_data.get("watch_providers")
+                    movie.save(
+                        update_fields=["vote_average", "watch_providers", "updated_at"]
+                    )
+
+                    updated_count += 1
+                    logger.info(f"[UPDATED] {movie.title} -> {tmdb_data.get('title')}")
+                else:
+                    logger.info(
+                        f"[NO DETAILS] Could not fetch details for {movie.title}"
+                    )
+
+            except Exception as e:
+                logger.error(f"Error updating {movie.title}: {e}")
+                continue
+
+        logger.info(f"Task completed: {updated_count} movies updated")
+
+    except Exception as e:
+        logger.error(f"Error in update_movies_with_tmdb: {e}", exc_info=True)
         raise
