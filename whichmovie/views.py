@@ -14,6 +14,9 @@ def home(request):
         release_date__isnull=False,
     ).exclude(poster_path="")
 
+    # Last six movies added to the database
+    last_added_movies = Movie.objects.order_by("-created_at")[:6]
+
     # Top picks of the month (recently added with high ratings)
     one_month_ago = timezone.now() - timedelta(days=30)
     top_month = enriched_movies.filter(created_at__gte=one_month_ago).order_by(
@@ -26,6 +29,9 @@ def home(request):
         "-vote_average"
     )[:6]
 
+    # Last movies added check
+    if last_added_movies.count() > 0:
+        last_added_movies = last_added_movies
     # If not enough recent movies, fall back to highest rated
     if top_month.count() < 6:
         top_month = enriched_movies.order_by("-vote_average")[:6]
@@ -38,6 +44,7 @@ def home(request):
         {
             "top_month": top_month,
             "top_week": top_week,
+            "last_added_movies": last_added_movies,
         },
     )
 

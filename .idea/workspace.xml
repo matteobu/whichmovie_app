@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="feat: add deployment workflow for production environment using SSH">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy.yml" afterDir="false" />
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="deploy debug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whichmovie/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/whichmovie/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,15 +201,7 @@
       <workItem from="1775567228035" duration="668000" />
       <workItem from="1775728689200" duration="2206000" />
       <workItem from="1775814307148" duration="9494000" />
-      <workItem from="1777052813403" duration="1030000" />
-    </task>
-    <task id="LOCAL-00013" summary="feat: Add backdrop_path, overview, poster_path, and release_date fields to Movie model">
-      <option name="closed" value="true" />
-      <created>1761919462629</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1761919462629</updated>
+      <workItem from="1777052813403" duration="2166000" />
     </task>
     <task id="LOCAL-00014" summary="feat: Enhance TMDBClient with request handling and movie search functionality">
       <option name="closed" value="true" />
@@ -595,7 +587,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777052824801</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="deploy debug">
+      <option name="closed" value="true" />
+      <created>1777053952714</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1777053952714</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +613,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Implement user authentication with login, signup, and profile pages" />
     <MESSAGE value="Add login/logout and profile" />
     <MESSAGE value="Add Password reset and allauth package" />
     <MESSAGE value="Add filter and password change" />
@@ -638,7 +637,8 @@
     <MESSAGE value="feat: add watch providers information to movie details and enhance modal display" />
     <MESSAGE value="feat: enhance modal display for watch providers with improved styling and functionality" />
     <MESSAGE value="feat: add deployment workflow for production environment using SSH" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add deployment workflow for production environment using SSH" />
+    <MESSAGE value="deploy debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploy debug" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/whichmovie_app$python_manage_py_runserver.coverage" NAME="python manage.py runserver Coverage Results" MODIFIED="1763738952145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/docs" />
