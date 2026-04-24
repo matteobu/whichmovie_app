@@ -15,7 +15,15 @@ def home(request):
     ).exclude(poster_path="")
 
     # Last six movies added to the database
-    last_added_movies = Movie.objects.order_by("-created_at")[:6]
+    last_added_movies = (
+        Movie.objects.filter(
+            tmdb_id__isnull=False,
+            poster_path__isnull=False,
+            release_date__isnull=False,
+        )
+        .exclude(poster_path="")
+        .order_by("-created_at")[:6]
+    )
 
     # Top picks of the month (recently added with high ratings)
     one_month_ago = timezone.now() - timedelta(days=30)
@@ -32,7 +40,7 @@ def home(request):
     # Last movies added check
     if last_added_movies.count() > 0:
         last_added_movies = last_added_movies
-    # If not enough recent movies, fall back to highest rated
+    # If not enough recent movies, fall back to the highest ratetd
     if top_month.count() < 6:
         top_month = enriched_movies.order_by("-vote_average")[:6]
     if top_week.count() < 6:
