@@ -277,9 +277,9 @@ class A24Client(YouTubeBaseClient):
 
         Formats:
           - "Materialists" → "Materialists"
-          - "Undertone | Official Trailer 2 HD | A24" → "Undertone"
+          - "Undertone | Official Trailer HD | A24" → "Undertone"
 
-        Skips podcasts, teasers, and non-movie content.
+        Skips anything that has not "Official Trailer HD".
 
         Args:
             title (str): Video title
@@ -289,18 +289,7 @@ class A24Client(YouTubeBaseClient):
         """
         logger.debug(f"[A24Client] Raw title: {title}")
 
-        # Skip non-movie content
-        skip_keywords = [
-            "Teaser",
-            "Coming Soon",
-            "Podcast",
-            "Promo",
-            "Featurette",
-            "Clip",
-            "PSA",
-        ]
-        if any(kw in title for kw in skip_keywords):
-            logger.debug(f"[A24Client] Skipped: {title}")
+        if "Official Trailer HD" not in title:
             return None
 
         # Take everything before the first pipe
