@@ -74,21 +74,7 @@ def _fetch_and_save_videos(client, source_name):
         raise
 
 
-# Disabled - too much low quality content
-# @cron("0 0 * * *")  # Run daily at midnight UTC
-# @dramatiq.actor(max_retries=3)
-# def fetch_rotten_tomatoes_videos():
-#     """
-#     Cron Task: Fetch RottenTomatoes YouTube channel videos.
-#
-#     Fetches latest videos and saves to database.
-#     Runs daily at midnight UTC.
-#     """
-#     client = RottenTomatoesClient()
-#     _fetch_and_save_videos(client, "rotten_tomatoes")
-
-
-@cron("0 0 * * *")  # Run daily at midnight UTC
+@cron("0 0 * * *")  # fetch_a24_videos - Run daily at midnight UTC
 @dramatiq.actor(max_retries=3)
 def fetch_a24_videos():
     """
@@ -101,7 +87,7 @@ def fetch_a24_videos():
     _fetch_and_save_videos(client, "a24")
 
 
-@cron("0 1 * * *")  # Run daily at 1 AM UTC (after YouTube fetch at midnight)
+@cron("0 1 * * *")  # fetch_mubi_videos - Run daily at 1 AM UTC
 @dramatiq.actor(max_retries=3)
 def fetch_mubi_videos():
     """
@@ -114,7 +100,7 @@ def fetch_mubi_videos():
     _fetch_and_save_videos(client, "mubi")
 
 
-@cron("0 2 * * *")  # Run daily at 2 AM UTC (after MUBI fetch at 1 AM)
+@cron("0 2 * * *")  # enrich_movies_with_tmdb - Run daily at 2 AM UTC
 @dramatiq.actor(max_retries=3)
 def enrich_movies_with_tmdb():
     """
@@ -207,7 +193,7 @@ def enrich_movies_with_tmdb():
         raise
 
 
-@cron("0 3 * * *")  # Run daily at 3 AM UTC (after Enrichment at 2 AM)
+@cron("0 3 * * *")  # update_movies_with_tmdb - Run daily at 3 AM UTC
 @dramatiq.actor(max_retries=3)
 def update_movies_with_tmdb():
     logger.info("Starting TMDB updating task...")
