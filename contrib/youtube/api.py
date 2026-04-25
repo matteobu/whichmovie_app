@@ -259,3 +259,54 @@ class A24Client(YouTubeBaseClient):
     def get_videos(self):
         """Fetch videos from A24 channel."""
         return self.get_data()
+
+
+class NeonClient(YouTubeBaseClient):
+    """
+    Neon channel client.
+
+    Handles Neon-specific title format.
+    Neon titles are dash-separated
+    ("I LOVE BOOSTERS - Official Trailer - Only In Theaters May 22").
+    """
+
+    CHANNEL_URL = "https://www.youtube.com/@neonrated/videos"
+    CHANNEL_ID = "UCpy5dRhZd-JbZP4NsrnLt1w"
+
+    def _clean_title(self, title):
+        """
+        Extract movie title from A24 title format.
+
+        Formats:
+          - "I LOVE BOOSTERS - Official Trailer - Only In Theaters May 22" → "I love boosters"
+
+        Skips anything that has not "Official Trailer".
+
+        Args:
+            title (str): Video title
+
+        Returns:
+            str or None: Cleaned title, or None if invalid format
+        """
+        logger.debug(f"[NeonClient] Raw title: {title}")
+
+        # Only process if it has "Official Trailer"
+        if "Official Trailer" not in title or "Official Trailer #" in title:
+            logger.debug(f"[NeonClient] Skipped (not a main trailer): {title}")
+            return None
+
+        # Take everything before the first pipe
+        cleaned = title.split(" - ")[0].strip()
+
+        # Remove surrounding quotes
+        cleaned = cleaned.strip("\"'")
+
+        # Convert to title case
+        cleaned = cleaned.title()
+
+        logger.debug(f"[NeonClient] Extracted title: {cleaned}")
+        return cleaned if cleaned else None
+
+    def get_videos(self):
+        """Fetch videos from Neon channel."""
+        return self.get_data()
