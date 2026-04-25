@@ -185,14 +185,9 @@ class MubiClient(YouTubeBaseClient):
         """
         logger.debug(f"[MubiClient] Raw title: {title}")
 
-        # Exclude teasers and "Coming Soon"
-        if "Official Teaser" in title or "Coming Soon" in title:
-            logger.debug(f"[MubiClient] Skipped (teaser/coming soon): {title}")
-            return None
-
         # Only process if it has "Official Trailer"
-        if "Official Trailer" not in title:
-            logger.debug(f"[MubiClient] Skipped (no 'Official Trailer'): {title}")
+        if "Official Trailer" not in title or "Official Trailer #" in title:
+            logger.debug(f"[MubiClient] Skipped (not a main trailer): {title}")
             return None
 
         # Extract everything before "Official Trailer" (remove pipes and whitespace)

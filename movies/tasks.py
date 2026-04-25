@@ -176,11 +176,15 @@ def enrich_movies_with_tmdb():
                             f"(TMDB: {tmdb_id}, score: {match_score:.2f})"
                         )
                     else:
-                        logger.info(
-                            f"[NO DETAILS] Could not fetch details for {movie.title}"
+                        logger.warning(
+                            f"[DELETED] {movie.title} -> no TMDB details, removing"
                         )
+                        movie.delete()
                 else:
-                    logger.info(f"[NOT FOUND] {movie.title} not found on TMDB")
+                    logger.warning(
+                        f"[DELETED] {movie.title} -> not found on TMDB, removing"
+                    )
+                    movie.delete()
 
             except Exception as e:
                 logger.error(f"Error enriching {movie.title}: {e}")
