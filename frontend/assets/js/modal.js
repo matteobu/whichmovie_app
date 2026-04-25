@@ -15,7 +15,8 @@
     const modalProviders = document.getElementById('modal-providers');
     const modalProvidersCountry = document.getElementById('modal-providers-country');
     const modalProvidersList = document.getElementById('modal-providers-list');
-const modalProvidersHeader = document.getElementById('modal-providers-header');
+    const modalProvidersHeader = document.getElementById('modal-providers-header');
+    const modalDetails = document.getElementById('modal-details');
 
     let currentWatchProviders = {};
 
@@ -110,6 +111,11 @@ const modalProvidersHeader = document.getElementById('modal-providers-header');
             currentWatchProviders = {};
         }
         renderProviders();
+
+        // Set full details link
+        if (modalDetails && modalDetails.tagName === 'A') {
+            modalDetails.href = '/movies/' + movieData.id + '/';
+        }
 
         // Show modal
         modal.classList.add('active');
@@ -291,8 +297,8 @@ const modalProvidersHeader = document.getElementById('modal-providers-header');
 
             if (!card) return;
 
-            // Don't open modal if clicking on watchlist button, trailer link, or other interactive elements
-            if (e.target.closest('.watchlist-btn, .remove-btn, .movie-link, a')) {
+            // Don't open modal if clicking on watchlist button, details link, trailer link, or other interactive elements
+            if (e.target.closest('.watchlist-btn, .details-btn, .remove-btn, .movie-link, a')) {
                 return;
             }
 

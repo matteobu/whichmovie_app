@@ -117,6 +117,44 @@ def toggle_watchlist(request):
 
 
 @login_required
+def movie_detail(request, pk):
+    """Full detail page for a single movie — login required."""
+    movie = get_object_or_404(Movie, pk=pk)
+
+    credits = movie.movie_credits or {}
+    cast = credits.get("cast", [])[:20]
+    director = next(
+        (c for c in credits.get("crew", []) if c.get("job") == "Director"), None
+    )
+
+    similar_raw = movie.similar or {}
+    raw_similar = (
+        similar_raw.get("results", [])[:12]
+        if isinstance(similar_raw, dict)
+        else similar_raw[:12]
+    )
+
+    similar_tmdb_ids = [s["id"] for s in raw_similar if s.get("id")]
+    similar_in_db = {
+        m.tmdb_id: m for m in Movie.objects.filter(tmdb_id__in=similar_tmdb_ids)
+    }
+    similar_results = [
+        {**s, "_db_movie": similar_in_db.get(s.get("id"))} for s in raw_similar
+    ]
+
+    in_watchlist = Watchlist.objects.filter(user=request.user, movie=movie).exists()
+
+    context = {
+        "movie": movie,
+        "cast": cast,
+        "director": director,
+        "similar_results": similar_results,
+        "in_watchlist": in_watchlist,
+    }
+    return render(request, "movies/movie_detail.html", context)
+
+
+@login_required
 def watchlist_page(request):
     """Display user's watchlist."""
     watchlist_items = (
