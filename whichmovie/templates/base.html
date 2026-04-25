@@ -339,7 +339,8 @@
             max-width: 900px;
             aspect-ratio: 16 / 9;
         }
-        .yt-embed-wrapper iframe {
+        .yt-embed-wrapper iframe,
+        .yt-embed-wrapper #yt-player {
             width: 100%;
             height: 100%;
             border-radius: 10px;
@@ -998,9 +999,7 @@
     <div id="yt-overlay" class="yt-overlay">
         <button class="yt-overlay-close" id="yt-overlay-close">&times;</button>
         <div class="yt-embed-wrapper">
-            <iframe id="yt-iframe" src="" frameborder="0" allowfullscreen
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-            </iframe>
+            <div id="yt-player"></div>
         </div>
     </div>
 
