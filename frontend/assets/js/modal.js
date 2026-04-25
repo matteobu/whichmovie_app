@@ -94,9 +94,10 @@
 
         // Set trailer button
         if (movieData.videoId) {
-            modalTrailer.href = 'https://www.youtube.com/watch?v=' + movieData.videoId;
+            modalTrailer.dataset.videoId = movieData.videoId;
             modalTrailer.style.display = 'inline-flex';
         } else {
+            modalTrailer.dataset.videoId = '';
             modalTrailer.style.display = 'none';
         }
 

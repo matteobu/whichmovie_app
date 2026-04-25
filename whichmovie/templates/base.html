@@ -307,6 +307,44 @@
             }
         }
 
+        /* YouTube Trailer Overlay */
+        .yt-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        .yt-overlay.active {
+            display: flex;
+        }
+        .yt-overlay-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.7);
+            font-size: 2.5rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0;
+            transition: color 0.2s;
+        }
+        .yt-overlay-close:hover { color: #fff; }
+        .yt-embed-wrapper {
+            width: 90vw;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+        }
+        .yt-embed-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
         /* Movie Modal */
         .modal-overlay {
             position: fixed;
@@ -956,6 +994,16 @@
     </div>
     {% endif %}
 
+    <!-- YouTube Trailer Overlay -->
+    <div id="yt-overlay" class="yt-overlay">
+        <button class="yt-overlay-close" id="yt-overlay-close">&times;</button>
+        <div class="yt-embed-wrapper">
+            <iframe id="yt-iframe" src="" frameborder="0" allowfullscreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+            </iframe>
+        </div>
+    </div>
+
     <!-- Movie Detail Modal -->
     <div id="movie-modal" class="modal-overlay">
         <div class="modal-content">
@@ -969,9 +1017,9 @@
                     <div class="modal-genres" id="modal-genres"></div>
                     <p class="modal-overview" id="modal-overview"></p>
                     <div class="modal-actions">
-                        <a class="modal-trailer-btn" id="modal-trailer" href="" target="_blank">
+                        <button class="modal-trailer-btn" id="modal-trailer" data-video-id="">
                             <i class="ti ti-player-play"></i> Watch Trailer
-                        </a>
+                        </button>
                         <button class="modal-watchlist-btn" id="modal-watchlist">
                             <i class="ti ti-heart"></i> <span>Add to Watchlist</span>
                         </button>
@@ -1074,6 +1122,7 @@
     })();
     </script>
     <script src="{% static 'js/modal.js' %}"></script>
+    <script src="{% static 'js/trailer.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

@@ -275,9 +275,9 @@
             {% endif %}
             <div class="detail-actions">
                 {% if movie.video_id %}
-                <a href="https://www.youtube.com/watch?v={{ movie.video_id }}" target="_blank" class="detail-btn detail-btn-primary">
+                <button class="detail-btn detail-btn-primary" data-video-id="{{ movie.video_id }}">
                     <i class="ti ti-player-play"></i> Watch Trailer
-                </a>
+                </button>
                 {% endif %}
                 <button class="detail-btn detail-btn-secondary detail-btn-watchlist {% if in_watchlist %}active{% endif %}"
                         data-movie-id="{{ movie.id }}"
