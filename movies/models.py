@@ -44,6 +44,8 @@ class Movie(models.Model):
         blank=True, null=True
     )  # List of country codes
     watch_providers = models.JSONField(default=dict, blank=True)
+    movie_credits = models.JSONField(default=dict)
+    similar = models.JSONField(default=list)
 
     # Metadata
     created_at = models.DateTimeField(auto_now_add=True)

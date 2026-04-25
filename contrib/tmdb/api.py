@@ -246,7 +246,7 @@ class TMDBClient(BaseClient):
         try:
             response = self._make_request(
                 f"/movie/{tmdb_id}",
-                params={"append_to_response": "watch/providers"},
+                params={"append_to_response": "watch/providers,credits,similar"},
             )
 
             # Extract genre names from genre objects
@@ -283,6 +283,8 @@ class TMDBClient(BaseClient):
                 "original_language": response.get("original_language"),
                 "production_countries": production_countries,
                 "watch_providers": watch_providers,
+                "movie_credits": response.get("credits"),
+                "similar": response.get("similar"),
             }
         except NetworkError as e:
             logger.error(f"Error fetching movie details for TMDB ID {tmdb_id}: {e}")

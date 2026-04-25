@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="feat: refine video title filtering to only include &quot;Official Trailer HD&quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="8baee565-f4d4-42d2-8a7c-e23bdb07e1ae" name="Changes" comment="feat: add NeonClient for handling Neon channel video titles and improve title extraction logic">
       <change beforePath="$PROJECT_DIR$/contrib/tmdb/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/tmdb/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contrib/youtube/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/youtube/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/management/commands/enrich_watch_providers.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/management/commands/enrich_watch_providers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,30 +203,7 @@
       <workItem from="1775728689200" duration="2206000" />
       <workItem from="1775814307148" duration="9494000" />
       <workItem from="1777052813403" duration="9353000" />
-    </task>
-    <task id="LOCAL-00020" summary="feat: Enhance YouTube video fetching with MubiClient integration and refactor fetching logic">
-      <option name="closed" value="true" />
-      <created>1761925354187</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1761925354187</updated>
-    </task>
-    <task id="LOCAL-00021" summary="feat: Refactor YouTube API client to use yt-dlp for video fetching and improve channel URL handling">
-      <option name="closed" value="true" />
-      <created>1762519880209</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1762519880209</updated>
-    </task>
-    <task id="LOCAL-00022" summary="feat: Add tests for RottenTomatoesClient and shared pytest fixtures">
-      <option name="closed" value="true" />
-      <created>1762519903031</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1762519903031</updated>
+      <workItem from="1777101115639" duration="5907000" />
     </task>
     <task id="LOCAL-00023" summary="feat: Remove YouTubeClient alias and update references to RottenTomatoesClient in the codebase">
       <option name="closed" value="true" />
@@ -597,7 +573,31 @@
       <option name="project" value="LOCAL" />
       <updated>1777059353059</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="feat: increase minimum similarity threshold for movie title matching and refine existing movie lookup">
+      <option name="closed" value="true" />
+      <created>1777101149430</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1777101149431</updated>
+    </task>
+    <task id="LOCAL-00070" summary="feat: enhance video title filtering and improve logging for TMDB movie deletions">
+      <option name="closed" value="true" />
+      <created>1777103341833</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1777103341833</updated>
+    </task>
+    <task id="LOCAL-00071" summary="feat: add NeonClient for handling Neon channel video titles and improve title extraction logic">
+      <option name="closed" value="true" />
+      <created>1777104269034</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1777104269034</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,9 +615,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="changes admin user" />
-    <MESSAGE value="add watchlist" />
-    <MESSAGE value="update mobile" />
     <MESSAGE value="watchlist non auth user" />
     <MESSAGE value="update top picks and DB" />
     <MESSAGE value="refactor styles and update color scheme across templates" />
@@ -640,7 +637,10 @@
     <MESSAGE value="feat: add daily task to update movies with TMDB data" />
     <MESSAGE value="feat: update cron job comments for video fetching tasks" />
     <MESSAGE value="feat: refine video title filtering to only include &quot;Official Trailer HD&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: refine video title filtering to only include &quot;Official Trailer HD&quot;" />
+    <MESSAGE value="feat: increase minimum similarity threshold for movie title matching and refine existing movie lookup" />
+    <MESSAGE value="feat: enhance video title filtering and improve logging for TMDB movie deletions" />
+    <MESSAGE value="feat: add NeonClient for handling Neon channel video titles and improve title extraction logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add NeonClient for handling Neon channel video titles and improve title extraction logic" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/whichmovie_app$python_manage_py_runserver.coverage" NAME="python manage.py runserver Coverage Results" MODIFIED="1763738952145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/docs" />
