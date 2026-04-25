@@ -154,6 +154,8 @@ ACCOUNT_RATE_LIMITS = {
     "reset_password": "5/h/ip",
     "reset_password_from_key": "5/h/ip",
 }
+
+ALLAUTH_TRUSTED_CLIENT_IP_HEADER = "x-real-ip"
 ACCOUNT_FORMS = {
     "signup": "accounts.forms.CustomSignupForm",
     "reset_password": "accounts.forms.CustomResetPasswordForm",

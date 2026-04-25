@@ -72,7 +72,7 @@
     });
 
     document.addEventListener('click', function(e) {
-        var btn = e.target.closest('[data-video-id]');
+        var btn = e.target.closest('button[data-video-id], a[data-video-id]');
         if (!btn) return;
         var videoId = btn.dataset.videoId;
         if (videoId) {
