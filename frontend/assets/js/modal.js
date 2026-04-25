@@ -297,8 +297,8 @@
 
             if (!card) return;
 
-            // Don't open modal if clicking on watchlist button, details link, trailer link, or other interactive elements
-            if (e.target.closest('.watchlist-btn, .details-btn, .remove-btn, .movie-link, a')) {
+            // Don't open modal if clicking on watchlist button, trailer link, or other interactive elements
+            if (e.target.closest('.watchlist-btn, .remove-btn, .movie-link, a')) {
                 return;
             }
 

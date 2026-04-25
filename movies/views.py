@@ -139,7 +139,7 @@ def movie_detail(request, pk):
         m.tmdb_id: m for m in Movie.objects.filter(tmdb_id__in=similar_tmdb_ids)
     }
     similar_results = [
-        {**s, "_db_movie": similar_in_db.get(s.get("id"))} for s in raw_similar
+        {**s, "db_movie": similar_in_db.get(s.get("id"))} for s in raw_similar
     ]
 
     in_watchlist = Watchlist.objects.filter(user=request.user, movie=movie).exists()

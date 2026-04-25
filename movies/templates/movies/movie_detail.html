@@ -322,8 +322,8 @@
     <h3 class="detail-section-title">Similar Movies</h3>
     <div class="similar-grid">
         {% for s in similar_results %}
-        {% if s._db_movie %}
-        <a href="{% url 'movie_detail' s._db_movie.id %}" class="similar-card">
+        {% if s.db_movie %}
+        <a href="{% url 'movie_detail' s.db_movie.id %}" class="similar-card">
         {% else %}
         <div class="similar-card">
         {% endif %}
@@ -336,7 +336,7 @@
                 <div class="similar-title">{{ s.title }}</div>
                 {% if s.release_date %}<div class="similar-year">{{ s.release_date|slice:":4" }}</div>{% endif %}
             </div>
-        {% if s._db_movie %}</a>{% else %}</div>{% endif %}
+        {% if s.db_movie %}</a>{% else %}</div>{% endif %}
         {% endfor %}
     </div>
 </div>
