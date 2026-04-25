@@ -159,49 +159,6 @@ class YouTubeBaseClient(BaseClient):
         return processed_videos
 
 
-class RottenTomatoesClient(YouTubeBaseClient):
-    """
-    RottenTomatoes INDIE channel client.
-
-    Handles title format: "Movie Title Trailer #1 (2025)"
-    Only processes official trailers (Trailer #), skips teasers.
-    """
-
-    CHANNEL_URL = "https://www.youtube.com/@RottenTomatoesIndie/videos"
-    CHANNEL_ID = "UCLyYEq4ODlw3OD9qhGqwimw"  # Fallback for backward compatibility
-
-    def _clean_title(self, title):
-        """
-        Extract movie title from RottenTomatoes trailer format.
-
-        Format: "Movie Title Official Trailer #1 (2025)" → "Movie Title"
-        Skips teaser trailers (no Trailer # pattern).
-
-        Args:
-            title (str): Video title
-
-        Returns:
-            str or None: Cleaned title, or None if not official trailer
-        """
-        # Only process if it has "Trailer #" (official trailers, not teasers)
-        if "Trailer #" not in title:
-            return None
-
-        # Extract everything before "Official Trailer #" or just "Trailer #"
-        # Pattern matches: "Title Official Trailer #" or "Title Trailer #"
-        match = re.match(r"^(.+?)\s+(?:Official\s+)?Trailer\s+#", title)
-
-        if match:
-            cleaned = match.group(1).strip()
-            return cleaned if cleaned else None
-
-        return None
-
-    def get_videos(self):
-        """Fetch videos from RottenTomatoes channel."""
-        return self.get_data()
-
-
 class MubiClient(YouTubeBaseClient):
     """
     Mubi channel client.

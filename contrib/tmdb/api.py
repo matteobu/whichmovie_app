@@ -100,7 +100,7 @@ class TMDBClient(BaseClient):
             raise NetworkError(f"TMDB API request failed: {e}") from e
 
     # Minimum similarity threshold to accept a match
-    MIN_SIMILARITY_THRESHOLD = 0.6
+    MIN_SIMILARITY_THRESHOLD = 0.8
 
     def search_movie(self, title, year=None, min_similarity=None):
         """

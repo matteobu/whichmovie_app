@@ -48,7 +48,7 @@ def _fetch_and_save_videos(client, source_name):
 
         for video in videos:
             # Check if movie already exists by title
-            existing_movie = Movie.objects.filter(title=video["title"]).first()
+            existing_movie = Movie.objects.filter(title__iexact=video["title"]).first()
 
             if existing_movie:
                 # Movie already exists, skip it
